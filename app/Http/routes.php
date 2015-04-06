@@ -15,7 +15,8 @@ Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');
 
-Route::controllers([
-	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
-]);
+/**
+ * Social authentication
+ */
+Route::get('login', 'AuthController@login');
+Route::get('logout', 'AuthController@logout');

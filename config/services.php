@@ -35,4 +35,10 @@ return [
 		'secret' => '',
 	],
 
+	'facebook' => [
+		'client_id' => getenv('FACEBOOK_CLIENT_ID'),
+		'client_secret' => getenv('FACEBOOK_CLIENT_SECRET'),
+		'redirect' => 'http://localhost:8000/login'
+	],
+
 ];
