@@ -22,13 +22,31 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['provider_id', 'name', 'email', 'avatar', 'link'];
+	protected $fillable = [
+		'provider_id', 
+		'name', 
+		'email', 
+		'avatar', 
+		'link'
+	];
 
 	/**
 	 * The attributes excluded from the model's JSON form.
 	 *
 	 * @var array
 	 */
-	protected $hidden = ['password', 'remember_token'];
+	protected $hidden = [
+		'password', 
+		'remember_token'
+	];
 
+	/**
+	 * A user can be part of more groups
+	 * 
+	 * @return [type] [description]
+	 */
+	public function groups()
+	{
+		return $this->belongsToMany('App\Group')->withPivot('tickets')->withTimestamps();
+	}
 }

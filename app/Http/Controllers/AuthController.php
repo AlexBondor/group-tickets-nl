@@ -11,7 +11,6 @@ use App\AuthenticateUserListener;
 
 class AuthController extends Controller implements AuthenticateUserListener 
 {
-
 	/**
 	 * Handle user login request
 	 * 
@@ -19,6 +18,10 @@ class AuthController extends Controller implements AuthenticateUserListener
 	 */
 	public function login(AuthenticateUser $authenticateUser, Request $request)
 	{
+		if (Auth::check())
+		{
+			return redirect('home');
+		}
 		return $authenticateUser->execute($request->has('code'), $this, 'facebook');
 	}
 
@@ -40,7 +43,6 @@ class AuthController extends Controller implements AuthenticateUserListener
 	public function logout()
 	{
 		Auth::logout();
-
 		return redirect('/');
 	}
 

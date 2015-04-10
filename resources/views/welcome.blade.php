@@ -43,6 +43,7 @@
 				<div class="title">Laravel 5</div>
 				<div class="quote">
 					<a href="{{ action('AuthController@login')}}"> Login with FB!</a>
+					<p>{{ $count }} users registered already.</p>
 				</div>
 			</div>
 		</div>

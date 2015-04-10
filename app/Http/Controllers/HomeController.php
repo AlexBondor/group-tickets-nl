@@ -1,5 +1,7 @@
 <?php namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
+
 class HomeController extends Controller {
 
 	/*
@@ -24,13 +26,17 @@ class HomeController extends Controller {
 	}
 
 	/**
-	 * Show the application dashboard to the user.
+	 * Handle after user login
 	 *
 	 * @return Response
 	 */
 	public function index()
 	{
-		return view('home');
+		$count = Auth::user()->groups;
+		if (count($count) != 0)
+		{
+			return redirect('groups');
+		}	
+		return redirect('search');
 	}
-
 }

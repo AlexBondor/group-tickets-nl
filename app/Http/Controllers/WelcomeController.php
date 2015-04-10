@@ -1,5 +1,7 @@
 <?php namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
+
 class WelcomeController extends Controller {
 
 	/*
@@ -8,8 +10,7 @@ class WelcomeController extends Controller {
 	|--------------------------------------------------------------------------
 	|
 	| This controller renders the "marketing page" for the application and
-	| is configured to only allow guests. Like most of the other sample
-	| controllers, you are free to modify or remove it as you desire.
+	| is configured to only allow guests. 
 	|
 	*/
 
@@ -30,7 +31,8 @@ class WelcomeController extends Controller {
 	 */
 	public function index()
 	{
-		return view('welcome');
+		$count = DB::select('select count(name) as count from users')[0]->count;
+		return view('welcome', compact('count'));
 	}
 
 }

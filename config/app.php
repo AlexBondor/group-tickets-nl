@@ -147,6 +147,7 @@ return [
 
 
 		'Laravel\Socialite\SocialiteServiceProvider',
+		'Illuminate\Html\HtmlServiceProvider',
 
 
 	],
@@ -198,7 +199,8 @@ return [
 		'View'      => 'Illuminate\Support\Facades\View',
 
 		'Socialite' => 'Laravel\Socialite\Facades\Socialite',
-
+		'Form' 		=> 'Illuminate\Html\FormFacade',
+		'Html' 		=> 'Illuminate\Html\HtmlFacade',
 	],
 
 ];

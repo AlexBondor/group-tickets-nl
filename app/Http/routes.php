@@ -10,10 +10,25 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
+/**
+ * Welcome screen
+ */
 Route::get('/', 'WelcomeController@index');
 
+/**
+ * Handle user after login
+ */
 Route::get('home', 'HomeController@index');
+
+/**
+ * Groups handling
+ */
+Route::get('groups', 'GroupController@index');
+
+/**
+ * Search handling
+ */
+Route::get('search', 'SearchController@index');
 
 /**
  * Social authentication
