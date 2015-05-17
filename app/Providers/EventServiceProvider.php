@@ -12,7 +12,7 @@ class EventServiceProvider extends ServiceProvider {
 	 */
 	protected $listen = [
 		'event.name' => [
-			'EventListener',
+			'EventHandler',
 		],
 	];
 

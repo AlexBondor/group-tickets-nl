@@ -1,31 +1,74 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use App\Http\Requests\SearchRequest;
+
+use App\Destination;
+use App\Group;
+
 
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Collection;
 
 class SearchController extends Controller {
-	
-	/**
-	 * Create a new controller instance.
-	 *
-	 * @return void
-	 */
+
+    private $user;
+    /**
+     * Create a new controller instance.
+     *
+     */
 	public function __construct()
 	{
 		$this->middleware('auth');
+
+        $this->user = Auth::user();
 	}
 
-	/**
-	 * Display search view
-	 * 
-	 * @return [type] [description]
-	 */
+    /**
+     * Display search view
+     * @return \Illuminate\View\View
+     */
 	public function index()
 	{
-		return view('search.index');
+		$destinations = Destination::lists('name', 'id');
+		asort($destinations);
+
+		return view('search.index', compact('destinations'));
 	}
 
+    /**
+     * Display the results matching the searched criteria
+     *
+     * @param  SearchRequest $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Illuminate\View\View
+     */
+    public function show(SearchRequest $request)
+    {
+        $builder = Group::myDestination($request->destination_list[0])
+                         ->myDate($request->date)
+                         ->enoughSlots($request->tickets);
+
+        // All results of searched query
+        $results = $builder->get();
+
+        // Get the groups that user already belongs to
+        // TODO
+        // get only the groups from today
+        $joined_groups = new Collection;
+        foreach ($results as $result) 
+        {
+            if ($result->isMember($this->user->id) == 1)
+            {
+                $joined_groups->add($result);
+            }
+        }
+
+        $new_groups = $results->diff($joined_groups);
+        
+        $tickets = $request->tickets;
+        $destination_id = $request->destination_list[0];
+        $date = $request->date;
+
+        return view('search.results', compact('new_groups', 'joined_groups', 'tickets', 'destination_id', 'date'));
+    }
 }

@@ -32,7 +32,7 @@ class AuthenticateUser {
 		if (!$hasCode) 
 		{
 			return $this->getAuthorizationFirst($provider);	
-		} 
+		}
 
 		$user = $this->usersRepo->findUserOrCreate($this->getSocialUser($provider));
 

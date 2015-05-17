@@ -11,11 +11,14 @@ use App\AuthenticateUserListener;
 
 class AuthController extends Controller implements AuthenticateUserListener 
 {
-	/**
-	 * Handle user login request
-	 * 
-	 * @return [type] [description]
-	 */
+    /**
+     * Handle user login request
+     *
+     * @param AuthenticateUser $authenticateUser
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|
+     * \Symfony\Component\HttpFoundation\RedirectResponse [type] [description]
+     */
 	public function login(AuthenticateUser $authenticateUser, Request $request)
 	{
 		if (Auth::check())
@@ -25,21 +28,21 @@ class AuthController extends Controller implements AuthenticateUserListener
 		return $authenticateUser->execute($request->has('code'), $this, 'facebook');
 	}
 
-	/**
-	 * Handle user logged
-	 * 
-	 * @return [type] [description]
-	 */
+    /**
+     * Handle user logged
+     *
+     * @param $user
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector [type] [description]
+     */
 	public function userHasLoggedIn($user)
 	{
 		return redirect('home');
 	}
 
-	/**
-	 * Handle user logout
-	 * 
-	 * @return [type] [description]
-	 */
+    /**
+     * Handle user logout
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector [type] [description]
+     */
 	public function logout()
 	{
 		Auth::logout();

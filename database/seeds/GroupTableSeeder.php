@@ -18,10 +18,11 @@ class GroupTableSeeder extends Seeder {
         $group = json_decode($groupsJson);
         foreach ($group as $item) 
         {
+            $time = rand( strtotime("Apr 10 2015"), strtotime("Jul 31 2015") );
         	App\Group::create(array(
         		'destination_id' => $item->destination_id,
                 'slots' => $item->slots,
-                'date' => new Carbon\Carbon()
+                'date' => date('Y-m-d', $time)
         	));
         }
     }

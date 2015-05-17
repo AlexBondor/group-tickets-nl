@@ -1,3 +1,363 @@
+/**
+ * General css
+ */
+
+body {
+	background-color: #f2f2f7;
+}
+
+.background {
+	background-color: #f2f2f7;
+}
+
+.heading-font-normal {
+	font-size: 30px;
+	font-weight: 400;
+	color: #000066;
+}
+
+.navbar-brand {
+  position: absolute;
+  float: left;
+  padding-left: 15px;
+  padding-top: 15px;
+}
+
+@media (max-width: 767px) {
+	.navbar-nav {
+		padding-left: 0px;
+	}
+
+	body { 
+		padding-top: 50px; 
+	}
+}
+
+@media screen and (min-width: 768px) {
+    .navbar-nav {
+		padding-left: 30px;
+	}
+
+	body { 
+		padding-top: 70px; 
+	}
+}
+
+.form-control {
+	width: 100%;
+	border: none;
+	border-radius: 0px;
+	padding: 6px 12px;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.btn {
+	border-radius: 0px;
+	font-weight: 400;
+	border: none;
+}
+
+label {
+	color: #000066;
+	font-weight: 400;
+}
+
+.btn-primary {
+	background-color: #000066;
+}
+
+.btn-primary:hover {
+	background-color: #000044;
+}
+
+.btn-success {
+	background-color: #3B8200;
+}
+
+.btn-success:hover {
+	background-color: #265400;
+}
+
+.content {
+	background: -webkit-linear-gradient(#FFDD44, #DDAA11); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(#FFDD44, #DDAA11); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(#FFDD44, #DDAA11); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(#FFDD44, #DDAA11); /* Standard syntax */
+	padding-top: 5%;
+	padding-bottom: 5%;
+	padding-left: 3%;
+	padding-right: 3%;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+hr {
+	border-color: #EEBB22;
+}
+
+.navbar {
+	background-color: #000066;
+}
+
+.navbar-default .navbar-nav > li > a {
+	background-color: #000066;
+}
+
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+	background-color: #000066;
+}
+
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+	color: #CCC;
+}
+
+.navbar-collapse {
+	color: #f2f2f7;
+}
+
+.navbar-default .navbar-nav > li > a {
+	color: #FFF;
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+	color: #CCC;
+}
+
+.navbar-default .navbar-brand {
+	color: #FFF;
+}
+
+.navbar-default .navbar-brand:hover {
+	color: #CCC;
+}
+
+.alert {
+	border: none;
+	border-radius: 0px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * Search page css
+ */
+
+.select2-container--default .select2-selection--single {
+	border: none;
+}
+
+.select2-container .select2-selection--single .select2-selection__rendered {
+	padding: 4px 12px;
+	color: #555;
+}
+
+.select2 {
+	border: none;
+	display: block;
+	width: 100%;
+	height: 34px;
+	font-size: 14px;
+	line-height: 1.42857143;
+	color: #555555;
+	background-color: #ffffff;
+	background-image: none;
+	border-radius: 0px;
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+.select2:focus {
+  border-color: #66afe9;
+  outline: 0;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
+}
+
+.select2::-moz-placeholder {
+  color: #999999;
+  opacity: 1;
+}
+
+.select2:-ms-input-placeholder {
+  color: #999999;
+}
+
+.select2::-webkit-input-placeholder {
+  color: #999999;
+}
+
+.select2[disabled],
+.select2[readonly],
+fieldset[disabled] .select2 {
+  cursor: not-allowed;
+  background-color: #eeeeee;
+  opacity: 1;
+}
+
+
+
+
+
+
+
+
+/**
+ * My Groups CSS
+ */
+
+.list-group-item {
+	border: none;
+}
+
+.list-group-item:first-child {
+	border-radius: 0px;
+}
+
+.list-group-item:last-child {
+	border-radius: 0px;
+}
+
+
+
 .slots {
 	margin-right: 2%;
+}
+
+.join-btn {
+	margin-right: 2%;
+}
+
+div.inline {
+    display:inline-block;
+    width: 19.48%;
+}
+
+.thumbnail .caption {
+	padding-top: 10%;
+}
+
+.thumbnail {
+	margin-bottom: 0px;
+	border-radius: 0px;
+	border-color: #EEE;
+}
+
+div.thumbnail > a > img {
+	width: 100%;
+}
+
+.group-destination-div {
+	padding-left: 0px;	
+}
+
+.group-destination-name {
+	font-size: 30px;
+}
+
+.group-date {
+	font-size: 15px;
+}
+
+.group-slots {
+	font-size: 30px;
+	padding-right: 0px;
+}
+
+.group-leave-div {
+	padding-left: 1px;
+	padding-right: 0px;	
+}
+
+.group-leave-btn {
+	border-radius: 0px;
+}
+
+.group-buy-div {
+	padding-left: 0px;
+	padding-right: 1px;	
+}
+
+.group-buy-btn {
+	border-radius: 0px;
+}
+
+.group-comment-user-name {
+	font-weight: 600;
+}
+
+.media-object {
+	width: 50px;
+	border: ;
+}
+
+.media {
+	border: 1px solid;
+	border-color: #EEE;
+	padding-left: 3px;
+	padding-top: 3px;
+	margin-top: 2px;
+}
+
+.group-user-info-col {
+	padding-left: 0px;
+}
+
+.input-add-tickets {
+	height: 100%;
+	width: 70%;
+	text-align: center;
+}
+
+.btn-set-tickets {
+	height: 100%;
+	width: 30%;
+}
+
+#btn-col > div {
+	height: 33.3%;
+}
+
+#btn-col > div > form, button, a {
+	height: 95%;
+}
+
+#btn-col {
+	padding-right: 0px;
+}
+
+.btn-order {
+	padding-top: 6%;
+}
+
+.btn-block + .btn-block {
+	margin-top: 0px;
+}
+
+.left-col {
+	padding-left: 0px;
+}
+
+.mid-col {
+	padding-left: 0px;
+}
+
+.right-col {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+div.container {
+	padding-left: 0px;
+	padding-right: 0px;
 }

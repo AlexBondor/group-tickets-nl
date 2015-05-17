@@ -14,11 +14,10 @@ class WelcomeController extends Controller {
 	|
 	*/
 
-	/**
-	 * Create a new controller instance.
-	 *
-	 * @return void
-	 */
+    /**
+     * Create a new controller instance.
+     *
+     */
 	public function __construct()
 	{
 		$this->middleware('guest');
@@ -31,7 +30,9 @@ class WelcomeController extends Controller {
 	 */
 	public function index()
 	{
+		// Get the number of registered users
 		$count = DB::select('select count(name) as count from users')[0]->count;
+
 		return view('welcome', compact('count'));
 	}
 

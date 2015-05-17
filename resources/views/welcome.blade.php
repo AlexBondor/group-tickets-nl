@@ -1,50 +1,32 @@
 <html>
 	<head>
-		<title>Laravel</title>
-		
-		<link href='//fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
-
-		<style>
-			body {
-				margin: 0;
-				padding: 0;
-				width: 100%;
-				height: 100%;
-				color: #B0BEC5;
-				display: table;
-				font-weight: 100;
-				font-family: 'Lato';
-			}
-
-			.container {
-				text-align: center;
-				display: table-cell;
-				vertical-align: middle;
-			}
-
-			.content {
-				text-align: center;
-				display: inline-block;
-			}
-
-			.title {
-				font-size: 96px;
-				margin-bottom: 40px;
-			}
-
-			.quote {
-				font-size: 24px;
-			}
-		</style>
+		<title>Welcome</title>
+		<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+		<link href="{{ asset('/css/welcome.css') }}" rel="stylesheet">
 	</head>
 	<body>
 		<div class="container">
 			<div class="content">
-				<div class="title">Laravel 5</div>
-				<div class="quote">
-					<a href="{{ action('AuthController@login')}}"> Login with FB!</a>
-					<p>{{ $count }} users registered already.</p>
+				<div class="div-container">
+					<div class="title">group-tickets-nl</div>
 				</div>
+
+				<div class="div-container">
+					<p class="numbers">{{ $count }} users registered already.</p>					
+				</div>
+
+				<div class="div-container">
+					<a class="btn btn-block btn-facebook fb-button" href="{{ action('AuthController@login') }}">
+				    	<i class="fa fa-facebook"></i> Login with FB!
+				    </a>
+			    </div>
+
+				<div class="div-container">
+				    <div class="disclaimer"> 
+				    	Disclaimer: This app has nothing to do with NS Company.
+				    </div>
+			    </div>
 			</div>
 		</div>
 	</body>

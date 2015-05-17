@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Auth;
 
+
+use Illuminate\Support\Facades\Event;
+use App\Events\NewCommentEvent;
+
 class HomeController extends Controller {
 
 	/*
@@ -15,11 +19,10 @@ class HomeController extends Controller {
 	|
 	*/
 
-	/**
-	 * Create a new controller instance.
-	 *
-	 * @return void
-	 */
+    /**
+     * Create a new controller instance.
+     *
+     */
 	public function __construct()
 	{
 		$this->middleware('auth');
@@ -31,12 +34,7 @@ class HomeController extends Controller {
 	 * @return Response
 	 */
 	public function index()
-	{
-		$count = Auth::user()->groups;
-		if (count($count) != 0)
-		{
-			return redirect('groups');
-		}	
-		return redirect('search');
-	}
+    {
+        return redirect('search');
+    }
 }
