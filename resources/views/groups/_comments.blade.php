@@ -26,8 +26,10 @@
 	});
 
 	$( document ).ready(function() {
-    	 $('#newComment').on( 'submit', function() {
- 
+    	 $('#newComment').on( 'submit', function() { 
+    	 	$comment = $('#comment').val();
+    	 	$('#comment').attr('disabled', '');
+    	 	$('#comment').val('');
 	        //.....
 	        //show some spinner etc to indicate operation in progress
 	        //.....
@@ -36,10 +38,11 @@
 				url: '/groups/comment',
 				data: { 
 					'group_id': $('#group_id').val(), 
-					'comment': $('#comment').val()
+					'comment': $comment
 				}
 			}).done( function (comments){
-				$('#comment').val('');
+    	 		$('#comment').removeAttr('disabled');
+				// prepend la ultimu comm
 				$("#commentsList").html(comments);
 			});
 	 

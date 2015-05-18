@@ -2,6 +2,27 @@
  * General css
  */
 
+.beta-label {
+	top: 0;
+	position: fixed;
+	padding-top: 18px;
+	padding-left: 127px;
+	color: #f2f2f7;
+	font-size: 8px;
+	z-index: 9998;
+}
+
+.footer {
+	bottom: 0;
+	position: fixed;
+	background-color: #F2F2F2;
+	border-top: 1px solid #999;
+	width: 100%;
+	height: 30px;
+	padding-top: 5px;
+	padding-right: 5px;
+}
+
 body {
 	background-color: #f2f2f7;
 }
@@ -17,27 +38,18 @@ body {
 }
 
 .navbar-brand {
-  position: absolute;
-  float: left;
-  padding-left: 15px;
-  padding-top: 15px;
+	padding-left: 15px;
+	padding-top: 15px;
+	padding-bottom: 0px;
 }
 
 @media (max-width: 767px) {
-	.navbar-nav {
-		padding-left: 0px;
-	}
-
 	body { 
 		padding-top: 50px; 
 	}
 }
 
 @media screen and (min-width: 768px) {
-    .navbar-nav {
-		padding-left: 30px;
-	}
-
 	body { 
 		padding-top: 70px; 
 	}
@@ -45,7 +57,7 @@ body {
 
 .form-control {
 	width: 100%;
-	border: none;
+	border: 1px solid #999;
 	border-radius: 0px;
 	padding: 6px 12px;
 	-moz-box-sizing: border-box;
@@ -56,7 +68,17 @@ body {
 .btn {
 	border-radius: 0px;
 	font-weight: 400;
-	border: none;
+	margin-bottom: 5%;
+	padding-left: 5px;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+#atTickets {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;	
 }
 
 label {
@@ -64,20 +86,38 @@ label {
 	font-weight: 400;
 }
 
+.btn-info {
+	background-color: #F2F2F7;
+	color: #000066;
+	border: 1px solid #999;
+}
+
+.btn-info:hover {
+	background-color: #F2F2E6;
+	color: #000066;
+	border: 1px solid #999;
+}
+
+.btn-info:focus {
+	background-color: #F2F2E6;
+	color: #000066;
+	border: 1px solid #999;
+}
+
 .btn-primary {
 	background-color: #000066;
 }
 
 .btn-primary:hover {
-	background-color: #000044;
+	background-color: #000055;
 }
 
-.btn-success {
-	background-color: #3B8200;
+.btn-primary:focus {
+	background-color: #000055;
 }
 
-.btn-success:hover {
-	background-color: #265400;
+textarea {
+	border-color: #999;
 }
 
 .content {
@@ -95,7 +135,9 @@ label {
 }
 
 hr {
-	border-color: #EEBB22;
+	border-color: #000066;
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
 
 .navbar {
@@ -104,6 +146,11 @@ hr {
 
 .navbar-default .navbar-nav > li > a {
 	background-color: #000066;
+}
+
+.navbar-default .navbar-nav > li > a:focus {
+  color: #CCC;
+  background-color: transparent;
 }
 
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
@@ -134,6 +181,10 @@ hr {
 	color: #CCC;
 }
 
+.navbar-default .navbar-brand:focus {
+	color: #CCC;
+}
+
 .alert {
 	border: none;
 	border-radius: 0px;
@@ -153,6 +204,20 @@ hr {
 /**
  * Search page css
  */
+.ui-slider .ui-slider-range {
+	z-index: 9999;
+}
+
+.list-group-details {
+	padding-left: 0px;
+}
+
+.search-data {
+	padding-top: 5px;
+	font-weight: 400px;
+	font-size: 14px;
+	color: #000066;
+}
 
 .select2-container--default .select2-selection--single {
 	border: none;
@@ -164,7 +229,7 @@ hr {
 }
 
 .select2 {
-	border: none;
+	border: 1px solid #999;
 	display: block;
 	width: 100%;
 	height: 34px;
@@ -215,9 +280,22 @@ fieldset[disabled] .select2 {
 /**
  * My Groups CSS
  */
+.joinable-form {
+	height: 30px;
+}
+
+#joinableTickets {
+	width: 60%;
+}
+
+#joinableBtn {
+	width: 40%;
+	height: 100%;
+}
 
 .list-group-item {
-	border: none;
+	border: 1px solid #999;
+	margin-bottom: 5px;
 }
 
 .list-group-item:first-child {
@@ -226,16 +304,6 @@ fieldset[disabled] .select2 {
 
 .list-group-item:last-child {
 	border-radius: 0px;
-}
-
-
-
-.slots {
-	margin-right: 2%;
-}
-
-.join-btn {
-	margin-right: 2%;
 }
 
 div.inline {
@@ -249,29 +317,35 @@ div.inline {
 
 .thumbnail {
 	margin-bottom: 0px;
+	height: 100%;
 	border-radius: 0px;
-	border-color: #EEE;
+	border-color: #999;
 }
 
 div.thumbnail > a > img {
-	width: 100%;
+	width: auto;
+	border: 1px solid #BBB;
 }
 
-.group-destination-div {
+.user-img {
+	height: 70%;	
+}
+
+.group-destination {
 	padding-left: 0px;	
-}
-
-.group-destination-name {
-	font-size: 30px;
-}
-
-.group-date {
-	font-size: 15px;
+	padding-right: 0px;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 .group-slots {
 	font-size: 30px;
+	color: #000066;
 	padding-right: 0px;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 .group-leave-div {
@@ -293,7 +367,7 @@ div.thumbnail > a > img {
 }
 
 .group-comment-user-name {
-	font-weight: 600;
+	font-weight: 400;
 }
 
 .media-object {
@@ -303,7 +377,9 @@ div.thumbnail > a > img {
 
 .media {
 	border: 1px solid;
-	border-color: #EEE;
+	border-color: #999;
+	color: #000066;
+	background-color: #F2F2F2;
 	padding-left: 3px;
 	padding-top: 3px;
 	margin-top: 2px;
@@ -334,6 +410,50 @@ div.thumbnail > a > img {
 
 #btn-col {
 	padding-right: 0px;
+	height: 150px;
+	float: right;
+	width: 40%;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+@media screen and (max-width: 337px) {
+	#thumbnail-col {
+		width: 50%;
+	}
+}
+
+@media screen and (min-width: 338px) and (max-width: 559px) {
+	#thumbnail-col {
+		width: 30%;
+	}
+}
+
+@media screen and (min-width: 560px) and (max-width: 674px) {
+	#thumbnail-col {
+		width: 25%;
+	}
+}
+
+@media screen and (min-width: 675px) and (max-width: 991px) {
+	#thumbnail-col {
+		width: 20%;
+	}
+}
+
+@media screen and (min-width: 992px) {
+	#thumbnail-col {
+		width: 30%;
+	}
+}
+
+#thumbnail-col {
+	height: 150px;
+	float: left;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 .btn-order {
@@ -345,10 +465,6 @@ div.thumbnail > a > img {
 }
 
 .left-col {
-	padding-left: 0px;
-}
-
-.mid-col {
 	padding-left: 0px;
 }
 

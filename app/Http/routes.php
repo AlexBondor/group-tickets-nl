@@ -15,10 +15,6 @@
  */
 Route::get('/', 'WelcomeController@index');
 
-/**
- * Handle user after login
- */
-Route::get('home', 'HomeController@index');
 
 /**
  * Groups handling
@@ -29,7 +25,7 @@ Route::post('groups/create', 'GroupController@createGroup');
 Route::post('groups/update', 'GroupController@updateGroup');
 Route::post('groups/join', 'GroupController@joinGroup');
 Route::post('groups/leave', 'GroupController@leaveGroup');
-Route::get('groups/{id}', 'GroupController@show');
+Route::get('groups/{slug}', 'GroupController@show');
 
 /**
  * Search handling

@@ -42,6 +42,8 @@ class CreateGroupsTable extends Migration {
 					  ->references('id')
 					  ->on('users')
 					  ->onDelete('cascade');
+
+				$table->integer('tickets');
 				
 				$table->timestamps();
 			});

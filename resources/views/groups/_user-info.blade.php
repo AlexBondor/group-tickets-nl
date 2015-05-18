@@ -1,8 +1,9 @@
 <div class="row">
-	<div id='thumbnail-col' class="col-xs-3 left-col">
+
+	<div id='thumbnail-col' class="left-col">
 		<div class="thumbnail">
 			<a href="{{ $logged_user->link }}">
-	  			<img src="{{ $logged_user->avatar }}">
+	  			<img class="user-img" src="{{ $logged_user->avatar }}">
 	  		</a>
 		    <div class="caption">
 				<span id="spanTickets" aria-hidden="true">+{{ $logged_user->tickets($group->id) }}</span>
@@ -12,28 +13,29 @@
 			</div>
 	    </div>
 	</div>
-	<div id="btn-col" class="col-xs-4 col-xs-offset-5 right-col">
+
+	<div id="btn-col" class="right-col">
 
 		<div>
 			<button id="btnAddTickets" class="btn btn-info btn-add-tickets btn-block" data-value="no-reset">Set Tickets</button>
 			<form id="formAddTicketsConfirm" method="post" action="/groups/update" class="btn-block hidden">
 				{!! Form::hidden('group_id', $group->id, ['id'=>'atGroupId']) !!}
 				<input id="atTickets" type="number" name="tickets" class="input-add-tickets pull-left" data-value="no-reset">
-				<button id="btnSetTickets" class="btn btn-info btn-block btn-set-tickets" type="submit">Set</button>
+				<button id="btnSetTickets" class="btn btn-primary btn-block btn-set-tickets" type="submit">Set</button>
 			</form>
 		</div>
 
 		<div>
-			<button id="btnOrder" class="btn btn-success btn-block" data-value="no-reset">Order</button>
-			<a id="btnOrderConfirm" href="https://www.ns.nl/producten/en/s/ns-groepsretour" class="btn btn-success btn-block hidden btn-order" target="_blank">Go to ns.nl</a>
+			<button id="btnOrder" class="btn btn-info btn-block" data-value="no-reset">Order</button>
+			<a id="btnOrderConfirm" href="https://www.ns.nl/producten/en/s/ns-groepsretour" class="btn btn-primary btn-block hidden btn-order" target="_blank">Go to ns.nl</a>
 		</div>
 
 		<div>
-			<button id="btnLeaveGroup" class="btn btn-warning btn-block cbtn-leave-group" data-value="no-reset">Leave group</button>
+			<button id="btnLeaveGroup" class="btn btn-info btn-block cbtn-leave-group" data-value="no-reset">Leave group</button>
 			<form id="formLeaveGroupConfirm" method="post" action="/groups/leave" class="btn-block hidden">
 				{!! Form::hidden('group_id', $group->id) !!}
 				{!! Form::hidden('tickets', $logged_user->tickets($group->id), ['id' => 'leavingTickets']) !!}
-				<button id="btnLeaveGroupConfirm" class="btn btn-danger btn-block btn-leave-group" type="submit">Click to confirm</button>
+				<button id="btnLeaveGroupConfirm" class="btn btn-primary btn-block btn-leave-group" type="submit">Click to confirm</button>
 			</form>
 		</div>
 
@@ -57,29 +59,6 @@
 	            resetButtons();
 		    }
 		});
-
-		$(window).load(function() {
-			setHeight();
-		});
-
-		$( window ).resize(function() {
-			setHeight();			
-		});
-		
-		function setHeight() {
-
-			var $ref = $('#thumbnail-col').height();
-			var $size = 10 / 100 * $ref;
-
-			$('#btn-col button, #btn-col a').attr('style', "font-size: " + $size + "px;");
-			$('#btn-col').height($ref);
-			
-			$('.well').attr('style', "font-size: " + $size + "px;");
-			$('.well').height($ref - 22);
-
-			$('.left-col').attr('style', "padding-right: " + $size + "px;");
-			$('.mid-col').attr('style', "padding-right: " + $size + "px;");
-		}
 
 		function resetButtons() {
 			$('#btnAddTickets').removeClass('hidden');

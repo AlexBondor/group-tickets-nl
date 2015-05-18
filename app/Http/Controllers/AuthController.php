@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 use App\AuthenticateUser;
 use App\AuthenticateUserListener;
@@ -23,7 +24,7 @@ class AuthController extends Controller implements AuthenticateUserListener
 	{
 		if (Auth::check())
 		{
-			return redirect('home');
+			return redirect('search');
 		}
 		return $authenticateUser->execute($request->has('code'), $this, 'facebook');
 	}
@@ -36,7 +37,7 @@ class AuthController extends Controller implements AuthenticateUserListener
      */
 	public function userHasLoggedIn($user)
 	{
-		return redirect('home');
+        return Redirect::intended();
 	}
 
     /**

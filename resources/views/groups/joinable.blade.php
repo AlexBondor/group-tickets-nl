@@ -13,17 +13,22 @@
 			</div>
 		</div>
 		<div class="col-xs-4 group-slots">
-			<input id="availableSlots" type="hidden" value="{{ $group->slots + $logged_user->tickets($group->id) }}">
 			<div id="groupSlots" class="pull-right">
 				{{ 10 - $group->slots }}/10
 			</div>
 		</div>
 	</div>
+	<form method="post" action="/groups/join" class="joinable-form">
+		<input id="availableSlots" type="hidden" value="{{ $group->slots }}">
+		{!! Form::hidden('group_id', $group->id) !!}
+		{!! Form::hidden('tickets', 1) !!}
+		<input id="joinableTickets" type="number" name="tickets" class="input-add-tickets pull-left" data-value="no-reset">
+		<input id="joinableBtn" class="btn btn-primary btn-block" type="submit" value="Join">
+	</form>
 	<hr>
-
-	@include('groups._user-info')
-	<hr>
-
+	<div class="heading-font-normal">
+		Members:
+	</div>
 	@include('groups._members')
 	@if (count($group->users) != 1)
 		<hr>
@@ -38,5 +43,11 @@
 	setTimeout(function(){
 	   window.location.reload(1);
 	}, 100000);
+	$(function ()
+	{
+		$('#joinableTickets').val(1);
+		$('#joinableTickets').attr('min', 1);
+		$('#joinableTickets').attr('max', $('#availableSlots').val());
+	});
 </script>
 @endsection

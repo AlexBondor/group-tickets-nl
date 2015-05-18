@@ -17,8 +17,8 @@ class CreateUsersTable extends Migration {
 			$table->increments('id');
 			$table->string('provider_id')->unique();
 			$table->string('name');
-			$table->string('email')->nullable();
-			$table->blob('avatar');
+			$table->string('email');
+			$table->string('avatar');
 			$table->string('link');
 			$table->rememberToken();
 			$table->timestamps();

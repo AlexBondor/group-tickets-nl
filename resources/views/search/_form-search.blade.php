@@ -7,13 +7,13 @@
 <!-- Date Form Input -->
 <div class="form-group">
 	{!! Form::label('date', "When?") !!}
-	{!! Form::input('date', 'date', $group->date->format('Y-m-d'), ['class' => 'form-control',  'value' => '2012-5-4', 'min'=> date("Y-m-d")]) !!}
+    <input id="datetime" type='text' name="date" class="form-control" data-provide="datepicker"/>
 </div>
 
 <!-- Tickets Form Input -->
 <div class="form-group">
 	{!! Form::label('tickets', "How many?") !!}
-	{!! Form::text('tickets', null, ['class' => 'form-control']) !!}
+	{!! Form::input('number', 'tickets', 1, ['class' => 'form-control']) !!}
 </div>
 
 </br>
@@ -26,5 +26,9 @@
 @section('footer')
 	<script type="text/javascript">
 		$('#destination_list').select2();
+		$('#datetime').datepicker({
+			autoclose: true,
+	        minDate: 0
+		}).datepicker("setDate", "0");
 	</script>
 @endsection

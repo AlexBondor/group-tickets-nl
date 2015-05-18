@@ -47,6 +47,19 @@ class GroupController extends Controller {
             return view('errors.no-groups');
         }
 
+        $my_groups = $this->sort($my_groups);
+
+		return view('groups.index', compact('my_groups'));
+	}
+
+    /**
+     * Sort groups after date and name
+     * 
+     * @param  [type] $my_groups [description]
+     * @return [type]            [description]
+     */
+    private function sort ($my_groups)
+    {
         // Transform Collection to Array
         // Create date and name arrays used for sorting
         foreach ($my_groups as $key => $group) 
@@ -58,10 +71,8 @@ class GroupController extends Controller {
 
         array_multisort($date, SORT_ASC, $name, SORT_ASC, $my_array);
 
-        $my_groups = $my_array;
-
-		return view('groups.index', compact('my_groups'));
-	}
+        return $my_array;
+    }
 
 	/**
 	 * Display details of a specific group
@@ -69,8 +80,11 @@ class GroupController extends Controller {
 	 * @param  [type] $id [description]
 	 * @return [type]     [description]
 	 */
-	public function show($groupId)
+	public function show($slug)
 	{
+        $url = explode("-", $slug);
+        $groupId = $url[0];
+
 		$group = Group::find($groupId);
         
         $logged_user = $this->user;
@@ -79,7 +93,7 @@ class GroupController extends Controller {
 		// then return error
 		if(!$group || $group->isMember($logged_user->id) == -1)
         {
-            return view('errors.503');
+            return view('groups.joinable', compact('group', 'logged_user'));
         }
 
 		return view('groups.show', compact('group', 'logged_user'));
@@ -93,27 +107,31 @@ class GroupController extends Controller {
      */
 	public function createGroup(CreateGroupRequest $request)
 	{
-        // Search for group just in case somebody just created it
-        $group = Group::myDestination($request->destination_id)
-                         ->myDate($request->date)
-                         ->enoughSlots($request->tickets)
-                         ->first();
+        $group_id = $this->checkIfJustCreated($request);
 
-        // If no group found
-        if( !$group )
+        // If no group found or is already joined
+        if($group_id == -1)
         {   
-            // Create new group
+            // Create a new group
             $group = Group::create([
                     'destination_id' => $request->destination_id,
                     'date' => $request->date,
                     'slots' => 10 - $request->tickets
                 ]);
+
+            // Continue group creation procedure
+            // Update group_user table
+            $this->syncGroupUsers($group->id, $request->tickets);
+
+            session()->flash('created_group_message', 'New group created!');
+
+            return redirect('groups');
         }
         else
         {
             // Create a join group request
             $parameters = array (
-                'group_id' => $group->id,
+                'group_id' => $group_id,
                 'tickets' => $request->tickets,
             );
 
@@ -121,14 +139,36 @@ class GroupController extends Controller {
 
             return $this->joinGroup($joinGroupRequest);
         }
-        // Continue group creation procedure
-        // Update group_user table
-        $this->syncGroupUsers($group->id, $request->tickets);
-
-		session()->flash('created_group_message', 'New group created!');
-
-		return redirect('groups');
 	}
+
+    /**
+     * Return -1 if nobody just created or there is one but already joined
+     * Return $group->id if smb just created a group
+     * @param  [type] $request [description]
+     * @return [type]          [description]
+     */
+    private function checkIfJustCreated($request)
+    {
+        // Search for group just in case somebody just created it
+        $group = Group::myDestination($request->destination_id)
+                        ->myDate($request->date)
+                        ->enoughSlots($request->tickets)
+                        ->first();
+        // If still no group
+        if(!$group)
+        {
+            return -1;
+        }
+        else
+        {
+            // If there is a group but I have already joined it
+            if($group->isMember($this->user->id) == 1)
+            {
+                return -1;
+            }
+        }
+        return $group->id;
+    }
 
     /**
      * Updates the tickets given by a user
@@ -285,8 +325,8 @@ class GroupController extends Controller {
         $group_id = Request::get('group_id');
         $comment = Request::get('comment');
 
-        $group = Group::find($group_id)->first();
-
+        $group = Group::find($group_id);
+        
         // Create the new group object
         $comment = Comment::create([
                     'group_id' => $group_id,

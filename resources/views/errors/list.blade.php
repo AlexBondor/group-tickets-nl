@@ -1,7 +1,8 @@
 @if ($errors->any())
-	<ul class="alert alert-danger">
+	<div class="alert alert-danger">
 		@foreach ($errors->all() as $error)
-			<li>{{ $error }}</li>
+			<span>{{ $error }}</span>
+			<br>
 		@endforeach
-	</ul>
+	</div>
 @endif

@@ -51,9 +51,6 @@ class SearchController extends Controller {
         // All results of searched query
         $results = $builder->get();
 
-        // Get the groups that user already belongs to
-        // TODO
-        // get only the groups from today
         $joined_groups = new Collection;
         foreach ($results as $result) 
         {
@@ -69,6 +66,8 @@ class SearchController extends Controller {
         $destination_id = $request->destination_list[0];
         $date = $request->date;
 
-        return view('search.results', compact('new_groups', 'joined_groups', 'tickets', 'destination_id', 'date'));
+        $destination_name = Destination::find($destination_id)->name;
+
+        return view('search.results', compact('new_groups', 'joined_groups', 'tickets', 'destination_id', 'date', 'destination_name'));
     }
 }

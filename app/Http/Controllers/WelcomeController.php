@@ -32,7 +32,7 @@ class WelcomeController extends Controller {
 	{
 		// Get the number of registered users
 		$count = DB::select('select count(name) as count from users')[0]->count;
-
+		
 		return view('welcome', compact('count'));
 	}
 
