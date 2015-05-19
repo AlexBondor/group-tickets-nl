@@ -26,7 +26,7 @@ return [
 	|
 	*/
 
-	'url' => 'http://localhost',
+	'url' => 'grouptickets.nl',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -198,7 +198,7 @@ return [
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
 
-		'Socialite' => 'Laravel\Socialite\Facades\Socialite',
+		'Socialize' => 'Laravel\Socialite\Facades\Socialite',
 		'Form' 		=> 'Illuminate\Html\FormFacade',
 		'Html' 		=> 'Illuminate\Html\HtmlFacade',
 	],

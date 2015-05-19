@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "0bc6847951967dc2a2d9d7794c20aedf",
+    "hash": "909728923ccda4f441b0dbc93590c4d0",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -2612,67 +2612,6 @@
                 "environment"
             ],
             "time": "2014-12-05 15:19:21"
-        },
-        {
-            "name": "zeroclipboard/zeroclipboard",
-            "version": "v2.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/zeroclipboard/zeroclipboard.git",
-                "reference": "039fb799c916d3730fbc898c2f5ef24581c7e9b7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/zeroclipboard/zeroclipboard/zipball/039fb799c916d3730fbc898c2f5ef24581c7e9b7",
-                "reference": "039fb799c916d3730fbc898c2f5ef24581c7e9b7",
-                "shasum": ""
-            },
-            "type": "component",
-            "extra": {
-                "component": {
-                    "scripts": [
-                        "dist/ZeroClipboard.js"
-                    ],
-                    "files": [
-                        "dist/ZeroClipboard.swf",
-                        "dist/ZeroClipboard.min.js",
-                        "dist/ZeroClipboard.min.map",
-                        "dist/ZeroClipboard.Core.js",
-                        "dist/ZeroClipboard.Core.min.js",
-                        "dist/ZeroClipboard.Core.min.map"
-                    ]
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Jon Rohan",
-                    "homepage": "http://jonrohan.me/",
-                    "role": "Developer"
-                },
-                {
-                    "name": "James M. Greene",
-                    "email": "james.m.greene@gmail.com",
-                    "homepage": "http://greene.io/",
-                    "role": "Developer"
-                }
-            ],
-            "description": "The ZeroClipboard library provides an easy way to copy text to the clipboard using an invisible Adobe Flash movie and a JavaScript interface.",
-            "homepage": "http://zeroclipboard.org/",
-            "keywords": [
-                "clip",
-                "clipboard",
-                "clippy",
-                "copy",
-                "cut",
-                "flash",
-                "paste",
-                "zclip"
-            ],
-            "time": "2014-12-29 17:46:14"
         }
     ],
     "packages-dev": [

@@ -21,7 +21,7 @@ class AuthController extends Controller implements AuthenticateUserListener
      * \Symfony\Component\HttpFoundation\RedirectResponse [type] [description]
      */
 	public function login(AuthenticateUser $authenticateUser, Request $request)
-	{
+	{		
 		if (Auth::check())
 		{
 			return redirect('search');

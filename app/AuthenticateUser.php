@@ -27,15 +27,14 @@ class AuthenticateUser {
 
     public function execute($hasCode, $listener, $provider) 
     {
-
-    	// If not authenticated yet
+	  	// If not authenticated yet
 		if (!$hasCode) 
 		{
 			return $this->getAuthorizationFirst($provider);	
 		}
 
 		$user = $this->usersRepo->findUserOrCreate($this->getSocialUser($provider));
-
+		
 		$this->auth->login($user, true);
 
 		return $listener->userHasLoggedIn($user);
