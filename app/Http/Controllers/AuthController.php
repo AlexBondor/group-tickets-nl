@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Redirect;
 
 use App\AuthenticateUser;
 use App\AuthenticateUserListener;
+use App\User;
 
 class AuthController extends Controller implements AuthenticateUserListener 
 {
@@ -21,25 +22,37 @@ class AuthController extends Controller implements AuthenticateUserListener
      * \Symfony\Component\HttpFoundation\RedirectResponse [type] [description]
      */
 	public function login(AuthenticateUser $authenticateUser, Request $request)
-	{		
+	{	
+		
 		if (Auth::check())
 		{
-            if (Auth::user()->confirmed)
-            {
-                return redirect('search');
-            }
-            else
-            {
-                return redirect('confirm');
-            }
+			if (Auth::user()->confirmed)
+        		{
+				return redirect('search');
+			}
+			else
+			{
+				return redirect('confirm');
+			}
 		}
+		
 		return $authenticateUser->execute($request->has('code'), $this, 'facebook');
 	}
 
     public function confirm()
     {
-        dd('confirm email motherfucker!');
+        return view('confirm');
     }
+
+	public function confirmed(Request $request)
+	{
+		$user = User::find($request->id);
+        	$user->email = $request->email;
+        	$user->confirmed = 1;
+		$user->save();
+
+		return redirect('search');
+	}
 
     /**
      * Handle user logged
@@ -49,7 +62,14 @@ class AuthController extends Controller implements AuthenticateUserListener
      */
 	public function userHasLoggedIn($user)
 	{
-        return Redirect::intended();
+		if(Auth::user()->confirmed)
+		{
+        		return Redirect::intended();
+		}
+		else
+		{
+			return redirect('confirm');
+		}
 	}
 
     /**

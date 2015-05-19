@@ -12,13 +12,18 @@ class UserRepository
 	 */
 	public function findUserOrCreate($userData) 
 	{
-        $user = User::firstOrCreate([
-            'provider_id' => $userData->id,
-            'name' => $userData->name,
+        $user = User::where('provider_id', '=', $userData->id)->first();
+	
+        if(!$user)
+	{
+        	$user = User::create([
+            		'provider_id' => $userData->id,
+            		'name' => $userData->name,
 			'email' => $userData->email,
 			'avatar' => $userData->avatar,
 			'link' => $userData->user['link']
-        ]);
+        	]);
+	}
 
         $this->checkIfUserNeedsUpdating($userData, $user);
 
@@ -50,7 +55,7 @@ class UserRepository
 
         if (!empty(array_diff($socialData, $dbData))) {
             $user->name = $userData->name;
-			$user->email = $userData->email;
+			$user->email = $user->email;
 			$user->avatar = $userData->avatar;
             $user->save();
         }

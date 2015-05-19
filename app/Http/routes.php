@@ -38,4 +38,5 @@ Route::post('search/results', 'SearchController@show');
  */
 Route::get('login', 'AuthController@login');
 Route::get('confirm', 'AuthController@confirm');
+Route::post('confirm', 'AuthController@confirmed');
 Route::get('logout', 'AuthController@logout');

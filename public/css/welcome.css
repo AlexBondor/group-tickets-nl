@@ -1,3 +1,63 @@
+.disclaimer {
+	float: right;
+	font-size: 19px;
+	padding-top: 10px;
+}
+
+.confirm-div {
+	width: 100%;
+	height: 50px;
+}
+
+.email-input {
+	float: right;
+	width: 60%;
+	height: 40px;
+	font-size: 20px;
+}
+
+.btn-confirm {
+	float: right;
+	width: 30%;
+	height: 40px;
+}
+
+.btn {
+	color: #F2F2F2;
+	border-radius: 0px;
+	font-weight: 400;
+	margin-bottom: 5%;
+	padding-left: 5px;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.btn-primary {
+	background-color: #000066;
+}
+
+.btn-primary:hover {
+	background-color: #000055;
+}
+
+.btn-primary:focus {
+	background-color: #000055;
+}
+
+.form-control {
+	width: 50%;
+	float: right;
+	height: 40px;
+	font-size: 20px;
+	border: 1px solid #999;
+	border-radius: 0px;
+	padding: 6px 12px;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
 body {
 	margin: 0;
 	padding: 0;

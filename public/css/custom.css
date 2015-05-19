@@ -328,7 +328,7 @@ div.thumbnail > a > img {
 }
 
 .user-img {
-	height: 70%;	
+	height: 70% !important;	
 }
 
 .group-destination {
