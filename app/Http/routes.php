@@ -37,4 +37,5 @@ Route::post('search/results', 'SearchController@show');
  * Social authentication
  */
 Route::get('login', 'AuthController@login');
+Route::get('confirm', 'AuthController@confirm');
 Route::get('logout', 'AuthController@logout');
