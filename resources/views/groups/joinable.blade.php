@@ -37,8 +37,6 @@
 		<hr>
 	@endif
 
-	@include('groups._comments')
-
 @endsection
 
 @section('footer')
