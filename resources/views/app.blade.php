@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"  xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
 
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta property="og:title" content="5 Time Saving Notebooks and Sketchbooks for Web Designers"/>
 		<title>Group Tickets</title>
 		<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
 		<link href="{{ asset('/css/roboto-font.css') }}" rel="stylesheet">
@@ -90,6 +93,9 @@
   ga('send', 'pageview');
 
 </script>
+		<script type="text/javascript">
+		$("meta[property='og\\:title']").attr("content", "Custom title");
+		</script>
 		@yield('footer')
 		
 	</body>
