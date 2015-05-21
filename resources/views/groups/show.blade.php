@@ -9,6 +9,9 @@
 					Destination: {{ $group->destination->name }}	
 					</br>
 					Date: {{ $group->date->format('d.m.y') }}	
+					<div class="share-it">
+				    	You can share the link with anybody!
+				  </div>
 				</div>			
 			</div>
 		</div>
