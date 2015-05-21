@@ -2,6 +2,13 @@
  * General css
  */
 
+.share-it {
+	font-style: italic;
+	font-size: 12px;
+	color: #000066;
+	padding-top: 5px;
+}
+
 .beta-label {
 	top: 0;
 	position: fixed;
