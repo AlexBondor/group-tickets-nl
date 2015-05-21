@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"  xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
 
 	<head>
 		<meta charset="utf-8">
@@ -38,6 +40,7 @@
 					<ul class="nav navbar-nav">
 						<li><a href="{{ url('/groups') }}">My Groups</a></li>
 						<li><a href="{{ url('/search') }}">Search</a></li>
+						<li><a href="{{ url('/faq') }}">FAQ</a></li>
 					</ul>
 
 					<ul class="nav navbar-nav navbar-right">

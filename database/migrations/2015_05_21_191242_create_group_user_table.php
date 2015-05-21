@@ -4,7 +4,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class GroupUserTable extends Migration {
+class CreateGroupUserTable extends Migration {
 
         /**
          * Run the migrations.
