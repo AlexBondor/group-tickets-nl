@@ -1,5 +1,5 @@
 @extends('app')
 
 @section('content')
-	<div class="heading-font-normal">Frequent asked questions</div>
+	<div class="heading-font-normal">Under construction</div>
 @endsection
