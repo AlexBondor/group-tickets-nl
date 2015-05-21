@@ -11,7 +11,7 @@
 			{!! Form::hidden('destination_id', $destination_id) !!}
 			{!! Form::hidden('date', $date) !!}
 			{!! Form::hidden('tickets', $tickets) !!}
-			<input class="btn btn-info btn-block" type="submit" value="Create new?">
+			<input class="btn btn-primary btn-block" type="submit" value="Create new group">
 		</form>
 
 	@endif
@@ -52,7 +52,7 @@
 		</a>
 
 	@endforeach
-	<a href="/search" class="btn btn-primary btn-block" style="margin-top: 20px"> 
+	<a href="/search" class="btn btn-info btn-block" style="margin-top: 20px"> 
 		Back to search
 	</a>
 </div>
