@@ -11,6 +11,9 @@
 				</div>
 				<div class="pull-right">
 					<h4 class="list-group-item-heading">{{ 10 - $group->slots }}/10</h4>
+					<br>
+					<br>
+					Click for details
 				</div>
 			</div>
 		</a>
