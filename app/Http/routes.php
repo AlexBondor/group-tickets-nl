@@ -32,6 +32,7 @@ Route::get('groups/{slug}', 'GroupController@show');
  */
 Route::get('search', 'SearchController@index');
 Route::post('search/results', 'SearchController@show');
+Route::get('faq', 'SearchController@faq');
 
 /**
  * Social authentication

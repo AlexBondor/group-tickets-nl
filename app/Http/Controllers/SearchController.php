@@ -70,4 +70,13 @@ class SearchController extends Controller {
 
         return view('search.results', compact('new_groups', 'joined_groups', 'tickets', 'destination_id', 'date', 'destination_name'));
     }
+
+    /**
+     * Display a list of FAQ
+     * @return [type] [description]
+     */
+    public function faq()
+    {
+        return view('search.faq');
+    }
 }

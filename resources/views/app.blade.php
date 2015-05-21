@@ -40,6 +40,7 @@
 					<ul class="nav navbar-nav">
 						<li><a href="{{ url('/groups') }}">My Groups</a></li>
 						<li><a href="{{ url('/search') }}">Search</a></li>
+						<li><a href="{{ url('/faq') }}">FAQ</a></li>
 					</ul>
 
 					<ul class="nav navbar-nav navbar-right">
