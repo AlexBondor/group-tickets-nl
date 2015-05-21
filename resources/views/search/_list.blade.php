@@ -52,4 +52,7 @@
 		</a>
 
 	@endforeach
+	<a href="/search" class="btn btn-primary btn-block" style="margin-top: 20px"> 
+		Back to search
+	</a>
 </div>

@@ -9,6 +9,9 @@
 					Destination: {{ $group->destination->name }}	
 					</br>
 					Date: {{ $group->date->format('d.m.y') }}	
+					</br>
+					</br>
+					Tickets:
 				</div>			
 			</div>
 		</div>

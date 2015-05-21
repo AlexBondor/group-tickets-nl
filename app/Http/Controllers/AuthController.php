@@ -26,14 +26,7 @@ class AuthController extends Controller implements AuthenticateUserListener
 		
 		if (Auth::check())
 		{
-			if (Auth::user()->confirmed)
-        		{
-				return redirect('search');
-			}
-			else
-			{
-				return redirect('confirm');
-			}
+			return redirect('search');
 		}
 		
 		return $authenticateUser->execute($request->has('code'), $this, 'facebook');
@@ -47,8 +40,8 @@ class AuthController extends Controller implements AuthenticateUserListener
 	public function confirmed(Request $request)
 	{
 		$user = User::find($request->id);
-        	$user->email = $request->email;
-        	$user->confirmed = 1;
+    	//$user->email = $request->email;
+    	$user->confirmed = 1;
 		$user->save();
 
 		return redirect('search');
@@ -62,14 +55,7 @@ class AuthController extends Controller implements AuthenticateUserListener
      */
 	public function userHasLoggedIn($user)
 	{
-		if(Auth::user()->confirmed)
-		{
-        		return Redirect::intended();
-		}
-		else
-		{
-			return redirect('confirm');
-		}
+        	return Redirect::intended();
 	}
 
     /**

@@ -1,7 +1,7 @@
 @foreach ($group->users as $user)
 	@if ($user->id != $logged_user->id)
 		<div class="thumbnail inline">
-			<a href="{{ $user->link }}">
+			<a href="{{ $user->link }}" target="_blank">
 	  			<img src="{{ $user->avatar }}">
 	  		</a>
 		    <div class="caption">

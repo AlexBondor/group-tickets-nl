@@ -91,9 +91,13 @@ class GroupController extends Controller {
 
         // If user is not a member of required groupId
 		// then return error
-		if(!$group || $group->isMember($logged_user->id) == -1)
+		if($group && $group->isMember($logged_user->id) == -1)
         {
             return view('groups.joinable', compact('group', 'logged_user'));
+        }
+        if(!$group)
+        {
+            return view('503.blade.php');
         }
 
 		return view('groups.show', compact('group', 'logged_user'));

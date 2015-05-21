@@ -2,7 +2,7 @@
 
 	<div id='thumbnail-col' class="left-col">
 		<div class="thumbnail">
-			<a href="{{ $logged_user->link }}">
+			<a href="{{ $logged_user->link }}" target="_blank">
 	  			<img class="user-img" src="{{ $logged_user->avatar }}">
 	  		</a>
 		    <div class="caption">
@@ -134,7 +134,7 @@
 
 			    //prevent the form from actually submitting in browser
 			    return false;
-				});
 			});
+		});
 	</script>
 @endsection

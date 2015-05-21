@@ -20,7 +20,7 @@
 	</head>
 
 	<body>
-		<div class="beta-label">beta</div>
+	<div class="beta-label">beta</div>
 
 		<nav class="navbar navbar-default navbar-fixed-top">
 			<div class="container-fluid">
@@ -55,23 +55,41 @@
 		<div class="container">
 			<div class="background row">
 				<div class="col-xs-12 col-md-6 col-md-offset-3 content">
-
+					
 					@include('_message')
 
 					@yield('content')
-
+					<div align="center" style="color:#000066; font-size: 12px; font-weight: 400">
+						support@grouptickets.nl
+					</div>
 				</div>
 			</div>
 		</div>
 		<footer class="footer">
-			Made by Alex Bondor © {{ date('Y') }}
+			Alex Bondor © {{ date('Y') }}
+			<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" style="float: right">
+				<input type="hidden" name="cmd" value="_s-xclick">
+				<input type="hidden" name="hosted_button_id" value="S68MYC5GGTXZQ">
+				<input type="image" src="http://grouptickets.nl/images/Support.png" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+				<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+			</form>
+
 		</footer>
 		<!-- Scripts -->
 		<script src="{{ asset('/js/jquery-1.10.2.js') }}"></script>
   		<script src="{{ asset('/js/jquery-ui.js') }}"></script>
 		<script src="{{ asset('/js/bootstrap.min.js') }}"></script>
 		<script src="{{ asset('/js/select2.min.js') }}"></script>
-	
+		<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-63171754-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 		@yield('footer')
 		
 	</body>

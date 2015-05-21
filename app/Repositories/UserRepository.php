@@ -15,15 +15,15 @@ class UserRepository
         $user = User::where('provider_id', '=', $userData->id)->first();
 	
         if(!$user)
-	{
+       {
         	$user = User::create([
-            		'provider_id' => $userData->id,
-            		'name' => $userData->name,
-			'email' => $userData->email,
-			'avatar' => $userData->avatar,
-			'link' => $userData->user['link']
+        		'provider_id' => $userData->id,
+        		'name' => $userData->name,
+    			'email' => $userData->email,
+    			'avatar' => $userData->avatar,
+    			'link' => $userData->user['link']
         	]);
-	}
+	   }
 
         $this->checkIfUserNeedsUpdating($userData, $user);
 
