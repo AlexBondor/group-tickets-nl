@@ -7,7 +7,6 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta property="og:title" content="5 Time Saving Notebooks and Sketchbooks for Web Designers"/>
 		<title>Group Tickets</title>
 		<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
 		<link href="{{ asset('/css/roboto-font.css') }}" rel="stylesheet">
@@ -93,9 +92,6 @@
   ga('send', 'pageview');
 
 </script>
-		<script type="text/javascript">
-		$("meta[property='og\\:title']").attr("content", "Custom title");
-		</script>
 		@yield('footer')
 		
 	</body>
