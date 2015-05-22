@@ -4,6 +4,7 @@
 	<div class="row">
 		<div class="col-xs-8 group-destination">
 			<div class="heading-font-normal">
+				<input type="hidden" id="group_id" value="{{ $group->id }}">
 				Group details:
 				<div class="search-data">
 					Destination: {{ $group->destination->name }}	
@@ -38,8 +39,13 @@
 
 @section('footer')
 <script type="text/javascript">
-	setTimeout(function(){
-	   window.location.reload(1);
-	}, 100000);
-</script>
+		var gi = $('#group_id').val();
+		alert(gi);
+        // var es = new EventSource("<?php echo action('HomeController@listen', array); ?>");
+
+        // es.addEventListener("message", function(e) {
+        //     arr = JSON.parse(e.data);
+        //     console.log(e.data);
+        // }, false);
+</script>  
 @endsection

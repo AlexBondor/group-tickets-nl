@@ -340,4 +340,32 @@ class GroupController extends Controller {
 
         return View::make('groups._comments-list', compact('group'));
     }
+
+    /**
+     * Listen if until something changes in group
+     * @return [type] [description]
+     */
+    public function listen($groupId)
+    {
+        $response = new Symfony\Component\StreamedResponse(function() {
+            //$old_comments = array();
+            $old_slots = 10;
+            while(true)
+            {
+                $group = Group::find($groupId);
+                $new_slots = $group->slots;
+                if ($old_slots != $new_slots)
+                {
+                    echo 'data: ' . json_encode($new_slots) . "\n\n";
+                    ob_flush();
+                    flush();
+                }
+                sleep(3);
+                $old_slots = $new_slots;
+            }
+        });
+        
+        $response->headers->set('Content-Type', 'text/event-stream');
+        return $response;
+    }
 }

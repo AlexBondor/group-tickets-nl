@@ -1,0 +1,487 @@
+/**
+ * General css
+ */
+
+.share-it {
+	font-style: italic;
+	font-size: 12px;
+	color: #000066;
+	padding-top: 5px;
+}
+
+.beta-label {
+	top: 0;
+	position: fixed;
+	padding-top: 18px;
+	padding-left: 127px;
+	color: #f2f2f7;
+	font-size: 8px;
+	z-index: 9998;
+}
+
+.footer {
+	bottom: 0;
+	position: fixed;
+	background-color: #F2F2F2;
+	border-top: 1px solid #999;
+	width: 100%;
+	height: 30px;
+	padding-top: 2px;
+	padding-right: 5px;
+}
+
+body {
+	background-color: #f2f2f7;
+}
+
+.background {
+	background-color: #f2f2f7;
+}
+
+.heading-font-normal {
+	font-size: 30px;
+	font-weight: 400;
+	color: #000066;
+}
+
+.navbar-brand {
+	padding-left: 15px;
+	padding-top: 15px;
+	padding-bottom: 0px;
+}
+
+@media (max-width: 767px) {
+	body { 
+		padding-top: 50px; 
+		padding-bottom: 70px; 
+	}
+}
+
+@media screen and (min-width: 768px) {
+	body { 
+		padding-top: 70px; 
+	}
+}
+
+.form-control {
+	width: 100%;
+	border: 1px solid #999;
+	border-radius: 0px;
+	padding: 6px 12px;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.btn {
+	border-radius: 0px;
+	font-weight: 400;
+	margin-bottom: 5%;
+	padding-left: 5px;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+#atTickets {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;	
+}
+
+label {
+	color: #000066;
+	font-weight: 400;
+}
+
+.btn-info {
+	background-color: #F2F2F7;
+	color: #000066;
+	border: 1px solid #999;
+}
+
+.btn-info:hover {
+	background-color: #F2F2E6;
+	color: #000066;
+	border: 1px solid #999;
+}
+
+.btn-info:focus {
+	background-color: #F2F2E6;
+	color: #000066;
+	border: 1px solid #999;
+}
+
+.btn-primary {
+	background-color: #000066;
+}
+
+.btn-primary:hover {
+	background-color: #000055;
+}
+
+.btn-primary:focus {
+	background-color: #000055;
+}
+
+textarea {
+	border-color: #999;
+}
+
+.content {
+	background: -webkit-linear-gradient(#FFDD44, #DDAA11); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(#FFDD44, #DDAA11); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(#FFDD44, #DDAA11); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(#FFDD44, #DDAA11); /* Standard syntax */
+	padding-top: 5%;
+	padding-bottom: 5%;
+	padding-left: 3%;
+	padding-right: 3%;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+hr {
+	border-color: #000066;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.navbar {
+	background-color: #000066;
+}
+
+.navbar-default .navbar-nav > li > a {
+	background-color: #000066;
+}
+
+.navbar-default .navbar-nav > li > a:focus {
+  color: #CCC;
+  background-color: transparent;
+}
+
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+	background-color: #000066;
+}
+
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+	color: #CCC;
+}
+
+.navbar-collapse {
+	color: #f2f2f7;
+}
+
+.navbar-default .navbar-nav > li > a {
+	color: #FFF;
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+	color: #CCC;
+}
+
+.navbar-default .navbar-brand {
+	color: #FFF;
+}
+
+.navbar-default .navbar-brand:hover {
+	color: #CCC;
+}
+
+.navbar-default .navbar-brand:focus {
+	color: #CCC;
+}
+
+.alert {
+	border: none;
+	border-radius: 0px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * Search page css
+ */
+.ui-slider .ui-slider-range {
+	z-index: 9999;
+}
+
+.list-group-details {
+	padding-left: 0px;
+}
+
+.search-data {
+	padding-top: 5px;
+	font-weight: 400px;
+	font-size: 14px;
+	color: #000066;
+}
+
+.select2-container--default .select2-selection--single {
+	border: none;
+}
+
+.select2-container .select2-selection--single .select2-selection__rendered {
+	padding: 4px 12px;
+	color: #555;
+}
+
+.select2 {
+	border: 1px solid #999;
+	display: block;
+	width: 100%;
+	height: 34px;
+	font-size: 14px;
+	line-height: 1.42857143;
+	color: #555555;
+	background-color: #ffffff;
+	background-image: none;
+	border-radius: 0px;
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+.select2:focus {
+  border-color: #66afe9;
+  outline: 0;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
+}
+
+.select2::-moz-placeholder {
+  color: #999999;
+  opacity: 1;
+}
+
+.select2:-ms-input-placeholder {
+  color: #999999;
+}
+
+.select2::-webkit-input-placeholder {
+  color: #999999;
+}
+
+.select2[disabled],
+.select2[readonly],
+fieldset[disabled] .select2 {
+  cursor: not-allowed;
+  background-color: #eeeeee;
+  opacity: 1;
+}
+
+
+
+
+
+
+
+
+/**
+ * My Groups CSS
+ */
+.joinable-form {
+	height: 30px;
+}
+
+#joinableTickets {
+	width: 60%;
+}
+
+#joinableBtn {
+	width: 40%;
+	height: 100%;
+}
+
+.list-group-item {
+	border: 1px solid #999;
+	margin-bottom: 5px;
+}
+
+.list-group-item:first-child {
+	border-radius: 0px;
+}
+
+.list-group-item:last-child {
+	border-radius: 0px;
+}
+
+div.inline {
+    display:inline-block;
+    width: 19.48%;
+}
+
+.thumbnail .caption {
+	padding-top: 10%;
+}
+
+.thumbnail {
+	margin-bottom: 0px;
+	height: 100%;
+	border-radius: 0px;
+	border-color: #999;
+}
+
+div.thumbnail > a > img {
+	width: auto;
+	border: 1px solid #BBB;
+}
+
+.user-img {
+	height: 70% !important;	
+}
+
+.group-destination {
+	padding-left: 0px;	
+	padding-right: 0px;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.group-slots {
+	font-size: 30px;
+	color: #000066;
+	padding-right: 0px;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.group-leave-div {
+	padding-left: 1px;
+	padding-right: 0px;	
+}
+
+.group-leave-btn {
+	border-radius: 0px;
+}
+
+.group-buy-div {
+	padding-left: 0px;
+	padding-right: 1px;	
+}
+
+.group-buy-btn {
+	border-radius: 0px;
+}
+
+.group-comment-user-name {
+	font-weight: 400;
+}
+
+.media-object {
+	width: 50px;
+	border: ;
+}
+
+.media {
+	border: 1px solid;
+	border-color: #999;
+	color: #000066;
+	background-color: #F2F2F2;
+	padding-left: 3px;
+	padding-top: 3px;
+	margin-top: 2px;
+}
+
+.group-user-info-col {
+	padding-left: 0px;
+}
+
+.input-add-tickets {
+	height: 100%;
+	width: 70%;
+	text-align: center;
+}
+
+.btn-set-tickets {
+	height: 100%;
+	width: 30%;
+}
+
+#btn-col > div {
+	height: 33.3%;
+}
+
+#btn-col > div > form, button, a {
+	height: 95%;
+}
+
+#btn-col {
+	padding-right: 0px;
+	height: 150px;
+	float: right;
+	width: 40%;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+@media screen and (max-width: 337px) {
+	#thumbnail-col {
+		width: 50%;
+	}
+}
+
+@media screen and (min-width: 338px) and (max-width: 559px) {
+	#thumbnail-col {
+		width: 30%;
+	}
+}
+
+@media screen and (min-width: 560px) and (max-width: 674px) {
+	#thumbnail-col {
+		width: 25%;
+	}
+}
+
+@media screen and (min-width: 675px) and (max-width: 991px) {
+	#thumbnail-col {
+		width: 20%;
+	}
+}
+
+@media screen and (min-width: 992px) {
+	#thumbnail-col {
+		width: 30%;
+	}
+}
+
+#thumbnail-col {
+	height: 150px;
+	float: left;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.btn-order {
+	padding-top: 6%;
+}
+
+.btn-block + .btn-block {
+	margin-top: 0px;
+}
+
+.left-col {
+	padding-left: 0px;
+}
+
+.right-col {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+div.container {
+	padding-left: 0px;
+	padding-right: 0px;
+}
