@@ -39,7 +39,7 @@
 
 @section('footer')
 <script type="text/javascript">
-		var gi = $('#group_id').val();
+		var gi = document.getElementById("group_id").value;
 		alert(gi);
         // var es = new EventSource("<?php echo action('HomeController@listen', array); ?>");
 
