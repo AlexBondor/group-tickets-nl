@@ -62,25 +62,25 @@
 	// setTimeout(function(){
 	//    window.location.reload(1);
 	// }, 100000);
-	$( document ).ready(function() {
-    	 $('.joinBtn').on( 'click', function() {
-			var access_token="{{ getenv("FACEBOOK_CLIENT_ID") }}|{{ getenv("FACEBOOK_CLIENT_SECRET") }}";
-			var template="{{ $logged_user->name }} has joined {{ $destination_slug }} - {{ $date }} group. Check it out!";
-			var callback="#"; //http://www.staging.grouptickets.nl/groups/{{ $group->id }}"
-			// var users = {!! $->users !!};
-		 // 	// Signal members on FB that somebody has joined the group
-		 // 	for(var index in users) 
-		 // 	{
-			// 	if (users[index]['provider_id'] != {{ $logged_user->provider_id }})
-			// 	{
-			// 		var url = "https://graph.facebook.com/" + users[index]['provider_id'] + "/notifications?access_token=" + access_token + "&template=" + template + "&href=" + callback;
-			// 		$.ajax({
-		 //        		type: "POST",
-		 //        		url: url
-			// 		});
-			// 	}
-			// }
-		});
-   	});
+	// $( document ).ready(function() {
+ //    	 $('.joinBtn').on( 'click', function() {
+	// 		var access_token="{{ getenv("FACEBOOK_CLIENT_ID") }}|{{ getenv("FACEBOOK_CLIENT_SECRET") }}";
+	// 		var template="{{ $logged_user->name }} has joined {{ $destination_slug }} - {{ $date }} group. Check it out!";
+	// 		var callback="#"; //http://www.staging.grouptickets.nl/groups/{{ $group->id }}"
+	// 		// var users = {!! $->users !!};
+	// 	 // 	// Signal members on FB that somebody has joined the group
+	// 	 // 	for(var index in users) 
+	// 	 // 	{
+	// 		// 	if (users[index]['provider_id'] != {{ $logged_user->provider_id }})
+	// 		// 	{
+	// 		// 		var url = "https://graph.facebook.com/" + users[index]['provider_id'] + "/notifications?access_token=" + access_token + "&template=" + template + "&href=" + callback;
+	// 		// 		$.ajax({
+	// 	 //        		type: "POST",
+	// 	 //        		url: url
+	// 		// 		});
+	// 		// 	}
+	// 		// }
+	// 	});
+ //   	});
 </script>
 @endsection
