@@ -69,21 +69,6 @@
 			var callback="#"; //http://www.staging.grouptickets.nl/groups/{{ $group->id }}"
 			var st = "/groups/" + $(this).attr('id');
 			alert(st);
-			// $.ajax({ url: st, success: function(data){
-		 //        console.log(data);
-		 //    }, dataType: "json"});
-		 // 	// Signal members on FB that somebody has joined the group
-		 // 	for(var index in users) 
-		 // 	{
-			// 	if (users[index]['provider_id'] != {{ $logged_user->provider_id }})
-			// 	{
-			// 		var url = "https://graph.facebook.com/" + users[index]['provider_id'] + "/notifications?access_token=" + access_token + "&template=" + template + "&href=" + callback;
-			// 		$.ajax({
-		 //        		type: "POST",
-		 //        		url: url
-			// 		});
-			// 	}
-			// }
 		});
    	});
 </script>
