@@ -65,7 +65,7 @@
 	$( document ).ready(function() {
     	 $('.joinBtn').on( 'click', function() {
 			var access_token="{{ getenv("FACEBOOK_CLIENT_ID") }}|{{ getenv("FACEBOOK_CLIENT_SECRET") }}";
-			var template="{{ $logged_user->name }} has joined {{ $destination_slug }} - {{ $date->format('d.m.y') }} group. Check it out!";
+			var template="{{ $logged_user->name }} has joined {{ $destination_slug }} - {{ $date }} group. Check it out!";
 			var callback="#"; //http://www.staging.grouptickets.nl/groups/{{ $group->id }}"
 			// var users = {!! $->users !!};
 		 // 	// Signal members on FB that somebody has joined the group
