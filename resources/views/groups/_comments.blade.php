@@ -26,7 +26,25 @@
 	});
 
 	$( document ).ready(function() {
-    	 $('#newComment').on( 'submit', function() { 
+    	 $('#newComment').on( 'submit', function() {
+    	 	var access_token="{{ getenv("FACEBOOK_CLIENT_ID") }}|{{ getenv("FACEBOOK_CLIENT_SECRET") }}";
+			var template="{{ $logged_user->name }} posted a comment on {{ $group->destination->slug }} - {{ $group->date->format('d.m.y') }} group. Check it out!";
+			var callback="#"; //http://www.staging.grouptickets.nl/groups/{{ $group->id }}"
+			var users = {!! $group->users !!};
+    	 	// Signal members on FB that somebody commented
+    	 	for(var index in users) 
+    	 	{
+				if (users[index]['provider_id'] != {{ $logged_user->provider_id }})
+				{
+					var url = "https://graph.facebook.com/" + users[index]['provider_id'] + "/notifications?access_token=" + access_token + "&template=" + template + "&href=" + callback;
+					$.ajax({
+                		type: "POST",
+                		url: url
+					});
+				}
+			}
+
+			// Save new comment to database and update user's view
     	 	$comment = $('#comment').val();
     	 	$('#comment').attr('disabled', '');
     	 	$('#comment').val('');
@@ -45,6 +63,7 @@
 				// prepend la ultimu comm
 				$("#commentsList").html(comments);
 			});
+
 	 
 	        //.....
 	        //do anything else you might want to do
