@@ -68,7 +68,8 @@ class SearchController extends Controller {
 
         $destination_name = Destination::find($destination_id)->name;
         $logged_user = $this->user;
-        return view('search.results', compact('new_groups', 'joined_groups', 'tickets', 'destination_id', 'date', 'destination_name', 'logged_user'));
+        $destination_slug = Destination::find($destination_id)->slug;
+        return view('search.results', compact('new_groups', 'joined_groups', 'tickets', 'destination_id', 'date', 'destination_name', 'logged_user', 'destination_slug'));
     }
 
     /**
