@@ -39,9 +39,37 @@
 
 @section('footer')
 <script type="text/javascript">
-	var gi = $('#group_id').val();
+	//alert({{ getenv('FACEBOOK_CLIENT_ID') }});
+	var access_token="{{ getenv("FACEBOOK_CLIENT_ID") }}|{{ getenv("FACEBOOK_CLIENT_SECRET") }}";
+	var template="{{ $logged_user->name }} posted a comment on {{ $group->destination->slug }} - {{ $group->date->format('d.m.y') }} group www.goo.gl";
+	var callback="#"; //http://www.staging.grouptickets.nl/groups/{{ $group->id }}"
 
-	var st = "/groups/listen/" + gi;
+	//console.log(url);
+	var users = {!! $group->users !!};
+	$( document ).ready(function() {
+    	 	$('#newComment').on( 'submit', function() {
+			for(var index in users) {
+				if (users[index]['provider_id'] != {{ $logged_user->provider_id }})
+				{
+					var url = "https://graph.facebook.com/" + users[index]['provider_id'] + "/notifications?access_token=" + access_token + "&template=" + template + "&href=" + callback;
+					$.ajax({
+                                		type: "POST",
+                                		url: url,
+                                		error: function(response) {
+                                        		//console.log(response);
+                                			}
+                        			}).done( function (data){
+                                			//console.log(data);
+                        			});
+					}
+				}
+			return false;
+		});
+	});
+//	alert(st);
+//	var gi = $('#group_id').val();
+
+//	var st = "/groups/listen/" + gi;
 	
 //	setInterval(function(){
 //    $.ajax({ url: st, success: function(data){

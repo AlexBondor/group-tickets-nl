@@ -7,10 +7,10 @@
 			</a>
 		</div>
 		<div class="media-body" style="width:100%">
-			<div class="col-xs-8 group-comment-user-name">{{ $comment->user->name }} </div>
-			<div class="col-xs-4" style="font-size:12px; float:right" align="right">{{ $comment->created_at->diffForHumans() }}</div>
+			<div class="col-xs-8 group-comment-user-name" style="padding-left: 0px;">{{ $comment->user->name }} </div>
+			<div class="col-xs-4" style="font-size:12px; float:righ;" align="right">{{ $comment->created_at->diffForHumans() }}</div>
 			<br>
-			<div class="col-xs-12">{{ $comment->text }}</div>
+			<div class="col-xs-12" style="padding-left: 0px;">{{ $comment->text }}</div>
 		</div>
 	</li>
 
