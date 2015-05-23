@@ -29,7 +29,7 @@
 				<form method="post" action="/groups/join" class="pull-right">
 					{!! Form::hidden('group_id', $new_group->id) !!}
 					{!! Form::hidden('tickets', $tickets) !!}
-					<input class="btn btn-primary join-btn" type="submit" value="Join">
+					<input id="{{ $new_group->id }}" class="btn btn-primary join-btn" type="submit" value="Join">
 				</form>
 
 			</div>
@@ -67,19 +67,23 @@
 			var access_token="{{ getenv("FACEBOOK_CLIENT_ID") }}|{{ getenv("FACEBOOK_CLIENT_SECRET") }}";
 			var template="{{ $logged_user->name }} has joined {{ $destination_slug }} - {{ $date }} group. Check it out!";
 			var callback="#"; //http://www.staging.grouptickets.nl/groups/{{ $group->id }}"
-			var users = {!! \App\Group::find(4)->users !!};
-		 	// Signal members on FB that somebody has joined the group
-		 	for(var index in users) 
-		 	{
-				if (users[index]['provider_id'] != {{ $logged_user->provider_id }})
-				{
-					var url = "https://graph.facebook.com/" + users[index]['provider_id'] + "/notifications?access_token=" + access_token + "&template=" + template + "&href=" + callback;
-					$.ajax({
-		        		type: "POST",
-		        		url: url
-					});
-				}
-			}
+			var st = "/groups/" + $(this).attr('id');
+			alert(st);
+			// $.ajax({ url: st, success: function(data){
+		 //        console.log(data);
+		 //    }, dataType: "json"});
+		 // 	// Signal members on FB that somebody has joined the group
+		 // 	for(var index in users) 
+		 // 	{
+			// 	if (users[index]['provider_id'] != {{ $logged_user->provider_id }})
+			// 	{
+			// 		var url = "https://graph.facebook.com/" + users[index]['provider_id'] + "/notifications?access_token=" + access_token + "&template=" + template + "&href=" + callback;
+			// 		$.ajax({
+		 //        		type: "POST",
+		 //        		url: url
+			// 		});
+			// 	}
+			// }
 		});
    	});
 </script>
