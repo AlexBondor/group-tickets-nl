@@ -69,6 +69,9 @@
 				'date': {{ $date }},
 				'callback': "#",
 				'action': "joined"
+			},
+			success: function(data) {
+				console.log(data)
 			}
 		});
 	});

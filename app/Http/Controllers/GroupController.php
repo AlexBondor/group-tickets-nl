@@ -390,6 +390,6 @@ class GroupController extends Controller {
      */
     public function notifyUsers(Request $request)
     {
-        dd($request);
+        return $request;
     }
 }
