@@ -22,8 +22,6 @@
 		<br>
 		When you click on the notification you will be redirected on a facebook page that contains my website. It should work the same as the website does. However if you get any errors let me know!
 		<br>
-		From now on the website won't change much because I've got other things to do as well.
-		<br>
 		<br>
 		Coded with love,
 		<br>
