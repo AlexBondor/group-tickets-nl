@@ -98,7 +98,7 @@ class GroupController extends Controller {
         
         if(Request::ajax())
         {
-            return $group->users()->toArray();
+            return $group->users->toArray();
         }
         
         $logged_user = $this->user;
