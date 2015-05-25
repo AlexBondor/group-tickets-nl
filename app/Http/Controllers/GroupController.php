@@ -404,6 +404,7 @@ class GroupController extends Controller {
 
         $client = new Guzzle();
         $client->post($url);
+        $client->send();
         return $url;
     }
 }
