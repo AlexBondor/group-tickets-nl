@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CommentRequest;
 use App\Http\Requests\CreateGroupRequest;
 use App\Http\Requests\UpdateGroupRequest;
+use Guzzle\Http\Client as Guzzle;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
@@ -401,7 +402,7 @@ class GroupController extends Controller {
                 "&template=" . $message .
                 "&href=" . $callback;
 
-        $client = new GuzzleHttp\Client();
+        $client = new Guzzle();
         $client->post($url);
         return $url;
     }
