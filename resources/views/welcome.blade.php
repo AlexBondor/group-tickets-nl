@@ -18,7 +18,7 @@
 				</div>
 
 				<div class="div-container">
-					<a class="btn btn-block btn-facebook fb-button" href="{{ action('AuthController@login') }}">
+					<a class="btn btn-block btn-facebook fb-button" href="{{ action('AuthController@login') }}" target="_blank">
 				    	<i class="fa fa-facebook"></i> Login with FB!
 				    </a>
 			    </div>
