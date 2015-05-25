@@ -16,7 +16,6 @@
 
 	@endif
 
-	<?php $i=0; ?>
 	@foreach ($new_groups as $new_group)
 		<div class="list-group-item">
 			<div class="row">
@@ -30,12 +29,11 @@
 				<form method="post" action="/groups/join" class="pull-right">
 					{!! Form::hidden('group_id', $new_group->id) !!}
 					{!! Form::hidden('tickets', $tickets) !!}
-					<input id="{{ $i }}" class="btn btn-primary join-btn" value="Join">
+					<input id="{{ group_id }}" class="btn btn-primary join-btn" value="Join">
 				</form>
 
 			</div>
 		</div>
-	<?php $i++; ?>
 	@endforeach
 
 	<div class="search-data heading-font-normal">
