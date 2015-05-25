@@ -390,6 +390,6 @@ class GroupController extends Controller {
      */
     public function notifyUsers()
     {
-        return Request::get('user_name');
+        return Request::get('group_id');
     }
 }
