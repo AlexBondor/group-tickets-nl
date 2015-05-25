@@ -394,7 +394,7 @@ class GroupController extends Controller {
         $callback = Request::get('callback');
         $action = Request::get('action');
         $group = Group::find($group_id);
-        $message = $this->user->name . " has " . $action . " " . $group->name . " - " . $group->date->format('d-m-y') . ". Check it out!";
+        $message = $this->user->name . " has " . $action . " " . $group->destination->name . " - " . $group->date->format('d-m-y') . ". Check it out!";
         return $message;
     }
 }
