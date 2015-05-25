@@ -396,10 +396,10 @@ class GroupController extends Controller {
         $group = Group::find($group_id);
         $message = $this->user->name . " has " . $action . " " . $group->destination->name . " - " . $group->date->format('d/m/y') . " group. Check it out!";
         $access_token = getenv('FACEBOOK_CLIENT_ID') . "|" . getenv('FACEBOOK_CLIENT_SECRET');
-        $url =  "https://graph.facebook.com/" + $this->user->provider_id + 
-                "/notifications?access_token=" + $access_token +
-                "&template=" + $message +
-                "&href=" + $callback;
+        $url =  "https://graph.facebook.com/" . $this->user->provider_id . 
+                "/notifications?access_token=" . $access_token .
+                "&template=" . $message .
+                "&href=" . $callback;
 
         
         return $url;
