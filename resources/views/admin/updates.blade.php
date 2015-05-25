@@ -12,8 +12,11 @@
 		You will get a notification every time one of the following happens:
 		<br>
 		- somebody joined a group you belong to
+		<br>
 		- somebody left a group you belong to
+		<br>
 		- somebody commented on a group you belong to
+		<br>
 		- one of the groups you belong to is full
 		<br>
 		<br>
