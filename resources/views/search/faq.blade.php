@@ -4,6 +4,22 @@
 	<div class="heading-font-normal">Some tips</div>
 	<hr>
 	<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+	<div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingOne">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          What does this website do?
+        </a>
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-body">
+       	This website is meant to make searching/creating/joining/sharing groups easier than the big Facebook groups that exist already. 
+       	<br>
+       	You cannot buy train tickets from this website! When a group is full you have to agree on who's going to buy the tickets and you buy the tickets from ns.nl website(the link is available on any group under the Order button).
+      </div>
+    </div>
+  </div>
   <div class="panel panel-default">
     <div class="panel-heading" role="tab" id="headingOne">
       <h4 class="panel-title">
@@ -21,7 +37,7 @@
 		<br>
 		Go to <a href="https://www.grouptickets.nl">https://www.grouptickets.nl</a>.
 		<br>
-		There will a page with a lock(in Chrome for ex) and you have to click "Advanced" and afterwards hit "Proceed"(it says that it is untrusted, but you can trust me there is nothing wrong that can happen). It should be similar to other browsers.
+		There will be a page with a lock(in Chrome for ex) and you have to click "Advanced" and afterwards hit "Proceed"(it says that it is untrusted, but you can trust me there is nothing wrong that can happen). It should be similar to other browsers.
 		<br>
 		That is the moment when you say you trust the website and from that moment on Facebook will be able to load the websites' content when you click a notification.
       </div>
@@ -46,4 +62,5 @@
       </div>
     </div>
   </div>
+</div>
 @endsection
