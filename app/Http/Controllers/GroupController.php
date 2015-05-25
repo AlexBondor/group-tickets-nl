@@ -281,7 +281,7 @@ class GroupController extends Controller {
         {
             $group->slots -= $request->tickets;
             $group->save();
-            return view('error.503');
+            return view('errors.503');
         }
 
         if($group->slots == 0)
