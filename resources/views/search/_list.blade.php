@@ -16,6 +16,7 @@
 
 	@endif
 
+	<?php $i=0; ?>
 	@foreach ($new_groups as $new_group)
 		<div class="list-group-item">
 			<div class="row">
@@ -29,11 +30,12 @@
 				<form method="post" action="/groups/join" class="pull-right">
 					{!! Form::hidden('group_id', $new_group->id) !!}
 					{!! Form::hidden('tickets', $tickets) !!}
-					<input id="{{ $new_group->id }}" class="btn btn-primary join-btn" type="submit" value="Join">
+					<input id="{{ $i }}" class="btn btn-primary join-btn" value="Join">
 				</form>
 
 			</div>
 		</div>
+	<?php $i++; ?>
 	@endforeach
 
 	<div class="search-data heading-font-normal">
@@ -62,14 +64,12 @@
 	// setTimeout(function(){
 	//    window.location.reload(1);
 	// }, 100000);
-	$( document ).ready(function() {
-    	 $('.joinBtn').on( 'click', function() {
-			var access_token="{{ getenv("FACEBOOK_CLIENT_ID") }}|{{ getenv("FACEBOOK_CLIENT_SECRET") }}";
-			var template="{{ $logged_user->name }} has joined {{ $destination_slug }} - {{ $date }} group. Check it out!";
-			var callback="#"; //http://www.staging.grouptickets.nl/groups/{{ $group->id }}"
-			var st = "/groups/" + $(this).attr('id');
-			alert(st);
-		});
-   	});
+	$(".join-btn").on("click", function() {
+		var access_token="{{ getenv("FACEBOOK_CLIENT_ID") }}|{{ getenv("FACEBOOK_CLIENT_SECRET") }}";
+		var template="{{ $logged_user->name }} has joined {{ $destination_slug }} - {{ $date }} group. Check it out!";
+		var callback="#";
+		var group_id = $(this).attr('id');
+	});
 </script>
 @endsection
+
