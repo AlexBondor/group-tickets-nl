@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CommentRequest;
 use App\Http\Requests\CreateGroupRequest;
 use App\Http\Requests\UpdateGroupRequest;
+use Guzzle\Http\Client as Guzzle;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
@@ -32,6 +33,15 @@ class GroupController extends Controller {
 		$this->user = Auth::user();
 	}
 
+    public function composeMessage()
+    {
+        if (Auth::user()->provider_id == getenv('ADMIN_ID'))
+        {
+            return view('admin.compose');
+        }
+        return view('errors.503');
+    }
+
     /**
      * Display groups that user belongs to
      * 
@@ -58,7 +68,7 @@ class GroupController extends Controller {
      * @param  [type] $my_groups [description]
      * @return [type]            [description]
      */
-    private function sort ($my_groups)
+    private function sort($my_groups)
     {
         // Transform Collection to Array
         // Create date and name arrays used for sorting
@@ -87,6 +97,11 @@ class GroupController extends Controller {
 
 		$group = Group::find($groupId);
         
+        if(Request::ajax())
+        {
+            return $group->users->toArray();
+        }
+        
         $logged_user = $this->user;
 
         // If user is not a member of required groupId
@@ -97,7 +112,7 @@ class GroupController extends Controller {
         }
         if(!$group)
         {
-            return view('503.blade.php');
+            return view('errors.503');
         }
 
 		return view('groups.show', compact('group', 'logged_user'));
@@ -223,6 +238,11 @@ class GroupController extends Controller {
         $group->slots += $old_tickets - $tickets;
         $group->save();
 
+        if($group->slots == 0)
+        {
+            $this->notifyGroupFull($group);
+        }
+
         if(Request::ajax())
         {
             return [$tickets, 10 - $group->slots];
@@ -253,13 +273,44 @@ class GroupController extends Controller {
         $this->syncGroupUsers($request->group_id, $request->tickets);
 
         // Update tickets available for group
-        
-        $group->slots -= $request->tickets;
-        $group->save();
+        // In Safari input max is not working.. so user might set
+        // more tickets than group has available
+        if ($group->slots - $request->tickets >= 0)
+        {
+            $group->slots -= $request->tickets;
+            $group->save();
+            return view('error.503');
+        }
+
+        if($group->slots == 0)
+        {
+            $this->notifyGroupFull($group);
+        }
 
         session()->flash('joined_group_message', 'You joined the group!');
 
         return redirect('groups');
+    }
+
+    public function notifyGroupFull($group)
+    {
+        $users = $group->users;
+        $callback = "/groups/" . $group->id;
+
+        $message = $group->destination->name . " - " . $group->date->format('d/m/y') . " group is FULL!";
+        $access_token = getenv('FACEBOOK_CLIENT_ID') . "|" . getenv('FACEBOOK_CLIENT_SECRET');
+
+        // Alert each member of the group that current
+        // user has done something:D
+        foreach ($users as $user) 
+        {
+            $url =  "https://graph.facebook.com/" . $user->provider_id . 
+                "/notifications?access_token=" . $access_token .
+                "&template=" . $message .
+                "&href=" . $callback;
+            $client = new Guzzle($url);
+            $client->post()->send();
+        }
     }
 
     /**
@@ -278,6 +329,7 @@ class GroupController extends Controller {
             return view('errors.503');
         }
 
+        DB::table('comments')->whereRaw('group_id = ? AND user_id = ?', [$group->id, $this->user->id])->delete();
         DB::table('group_user')->whereRaw('group_id = ? AND user_id = ?', [$group->id, $this->user->id])->delete();
 
         // Update tickets available for the group
@@ -339,5 +391,66 @@ class GroupController extends Controller {
                 ]);
 
         return View::make('groups._comments-list', compact('group'));
+    }
+
+    /**
+     * Listen if until something changes in group
+     * @return [type] [description]
+     */
+    public function listen($groupId)
+    {
+        $response = new Symfony\Component\StreamedResponse(function() {
+            //$old_comments = array();
+            $old_slots = 10;
+            while(true)
+            {
+                $group = Group::find($groupId);
+                $new_slots = $group->slots;
+                if ($old_slots != $new_slots)
+                {
+                    echo 'data: ' . json_encode($new_slots) . "\n\n";
+                    ob_flush();
+                    flush();
+                }
+                sleep(3);
+                $old_slots = $new_slots;
+            }
+        });
+        
+        $response->headers->set('Content-Type', 'text/event-stream');
+        return $response;
+    }
+
+    /**
+     * Notify the users when something changed in a group
+     * @param  Request $request [description]
+     * @return [type]           [description]
+     */
+    public function notifyUsers()
+    {
+        $group_id = Request::get('group_id');
+        $callback = Request::get('callback');
+        $action = Request::get('action');
+        $group = Group::find($group_id);
+        $users = $group->users;
+        $tickets = 10 - $group->slots;
+
+        $message = $this->user->name . " has " . $action . " [" . $tickets . "/10]" . $group->destination->name . " - " . $group->date->format('d/m/y') . " group.";
+        $access_token = getenv('FACEBOOK_CLIENT_ID') . "|" . getenv('FACEBOOK_CLIENT_SECRET');
+
+        // Alert each member of the group that current
+        // user has done something:D
+        foreach ($users as $user) 
+        {
+            if($user->provider_id != $this->user->provider_id)
+            {
+                $url =  "https://graph.facebook.com/" . $user->provider_id . 
+                    "/notifications?access_token=" . $access_token .
+                    "&template=" . $message .
+                    "&href=" . $callback;
+                $client = new Guzzle($url);
+                $client->post()->send();
+            }
+        }
     }
 }

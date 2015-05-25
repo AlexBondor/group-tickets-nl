@@ -21,7 +21,7 @@
 			<form id="formAddTicketsConfirm" method="post" action="/groups/update" class="btn-block hidden">
 				{!! Form::hidden('group_id', $group->id, ['id'=>'atGroupId']) !!}
 				<input id="atTickets" type="number" name="tickets" class="input-add-tickets pull-left" data-value="no-reset">
-				<button id="btnSetTickets" class="btn btn-info btn-block btn-set-tickets" type="submit">Set</button>
+				<button id="btnSetTickets" class="btn btn-primary btn-block btn-set-tickets" type="submit">Set</button>
 			</form>
 		</div>
 
@@ -134,6 +134,20 @@
 
 			    //prevent the form from actually submitting in browser
 			    return false;
+			});
+		});
+
+		$( document ).ready(function() {
+			$("#btnLeaveGroupConfirm").on("click", function() {
+				$.ajax({
+					type: "POST",
+					url: "/groups/notify",
+					data: {
+						'group_id': "{{ $group->id }}",
+						'callback': "/groups/{{ $group->id }}",
+						'action': "left"
+					}
+				});
 			});
 		});
 	</script>

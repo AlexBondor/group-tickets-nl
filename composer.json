@@ -8,6 +8,7 @@
 		"laravel/framework": "5.0.*",
 		"laravel/socialite": "~2.0",
 		"doctrine/dbal": "~2.3",
+		"guzzlehttp/guzzle": "5.0.*@dev",
 		"illuminate/html": "~5.0"
 	},
 	"require-dev": {

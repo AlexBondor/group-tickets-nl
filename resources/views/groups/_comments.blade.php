@@ -26,7 +26,18 @@
 	});
 
 	$( document ).ready(function() {
-    	 $('#newComment').on( 'submit', function() { 
+		$("#newComment").on("submit", function() {
+			$.ajax({
+				type: "POST",
+				url: "/groups/notify",
+				data: {
+					'group_id': "{{ $group->id }}",
+					'callback': "/groups/{{ $group->id }}",
+					'action': "commented on"
+				}
+			});
+
+			// Save new comment to database and update user's view
     	 	$comment = $('#comment').val();
     	 	$('#comment').attr('disabled', '');
     	 	$('#comment').val('');
@@ -45,6 +56,7 @@
 				// prepend la ultimu comm
 				$("#commentsList").html(comments);
 			});
+
 	 
 	        //.....
 	        //do anything else you might want to do
@@ -52,7 +64,7 @@
 	 
 	        //prevent the form from actually submitting in browser
 	        return false;
-	    });
+		});
 	});
 </script>
 @endsection

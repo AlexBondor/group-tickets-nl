@@ -41,9 +41,19 @@
 
 @section('footer')
 <script type="text/javascript">
-	setTimeout(function(){
-	   window.location.reload(1);
-	}, 100000);
+	$( document ).ready(function() {
+		$("#joinableBtn").on("click", function() {
+			$.ajax({
+				type: "POST",
+				url: "/groups/notify",
+				data: {
+					'group_id': "{{ $group->id }}",
+					'callback': "/groups/{{ $group->id }}",
+					'action': "joined"
+				}
+			});
+		});
+	});
 	$(function ()
 	{
 		$('#joinableTickets').val(1);

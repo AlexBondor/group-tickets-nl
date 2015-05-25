@@ -6,10 +6,11 @@
 				<img class="media-object" src="{{ $comment->user->avatar }}"/>
 			</a>
 		</div>
-		<div class="media-body">
-			<span class="group-comment-user-name">{{ $comment->user->name }}</span>
+		<div class="media-body" style="width:100%">
+			<div class="col-xs-8 group-comment-user-name" style="padding-left: 0px;">{{ $comment->user->name }} </div>
+			<div class="col-xs-4" style="font-size:12px; float:righ;" align="right">{{ $comment->created_at->diffForHumans() }}</div>
 			<br>
-			<span>{{ $comment->text }}</span>
+			<div class="col-xs-12" style="padding-left: 0px;">{{ $comment->text }}</div>
 		</div>
 	</li>
 

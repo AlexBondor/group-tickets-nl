@@ -4,6 +4,7 @@
 	<div class="row">
 		<div class="col-xs-8 group-destination">
 			<div class="heading-font-normal">
+				<input type="hidden" id="group_id" value="{{ $group->id }}"/>
 				Group details:
 				<div class="search-data">
 					Destination: {{ $group->destination->name }}	
@@ -37,9 +38,4 @@
 @endsection
 
 @section('footer')
-<script type="text/javascript">
-	setTimeout(function(){
-	   window.location.reload(1);
-	}, 100000);
-</script>
 @endsection

@@ -29,7 +29,7 @@
 				<form method="post" action="/groups/join" class="pull-right">
 					{!! Form::hidden('group_id', $new_group->id) !!}
 					{!! Form::hidden('tickets', $tickets) !!}
-					<input class="btn btn-primary" type="submit" value="Join">
+					<input id="{{ $new_group->id }}" class="btn btn-primary join-btn" type="submit" value="Join">
 				</form>
 
 			</div>
@@ -56,3 +56,20 @@
 		Back to search
 	</a>
 </div>
+
+@section('footer')
+<script type="text/javascript">
+	$(".join-btn").on("click", function() {
+		$.ajax({
+			type: "POST",
+			url: "/groups/notify",
+			data: {
+				'group_id': $(this).attr('id'),
+				'callback': "/groups/" + $(this).attr('id'),
+				'action': "joined"
+			}
+		});
+	});
+</script>
+@endsection
+
