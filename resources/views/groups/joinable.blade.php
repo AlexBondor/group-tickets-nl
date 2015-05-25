@@ -48,7 +48,7 @@
 				url: "/groups/notify",
 				data: {
 					'group_id': "{{ $group->id }}",
-					'callback': "/groups/{{ $group->id }}",
+					'callback': "groups/{{ $group->id }}",
 					'action': "joined"
 				}
 			});
