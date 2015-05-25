@@ -32,6 +32,15 @@ class GroupController extends Controller {
 		$this->user = Auth::user();
 	}
 
+    public function composeMessage()
+    {
+        if (Auth::user()->provider_id == getenv('ADMIN_ID'))
+        {
+            return view('admin.compose');
+        }
+        return view('errors.503');
+    }
+
     /**
      * Display groups that user belongs to
      * 
@@ -87,6 +96,11 @@ class GroupController extends Controller {
 
 		$group = Group::find($groupId);
         
+        if(Request::ajax())
+        {
+            return $group->users()->toArray();
+        }
+        
         $logged_user = $this->user;
 
         // If user is not a member of required groupId
@@ -97,7 +111,7 @@ class GroupController extends Controller {
         }
         if(!$group)
         {
-            return view('503.blade.php');
+            return view('errors.503');
         }
 
 		return view('groups.show', compact('group', 'logged_user'));

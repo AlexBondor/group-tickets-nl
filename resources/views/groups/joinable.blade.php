@@ -41,9 +41,6 @@
 
 @section('footer')
 <script type="text/javascript">
-	// setTimeout(function(){
-	//    window.location.reload(1);
-	// }, 100000);
 	$( document ).ready(function() {
     	 $('#joinableBtn').on( 'click', function() {
 			var access_token="{{ getenv("FACEBOOK_CLIENT_ID") }}|{{ getenv("FACEBOOK_CLIENT_SECRET") }}";
