@@ -65,11 +65,8 @@
 			url: "/groups/notify",
 			data: {
 				'group_id': $(this).attr('id'),
-				'callback': "#",
+				'callback': "/groups/" + $(this).attr('id'),
 				'action': "joined"
-			},
-			success: function(data) {
-				console.log(data)
 			}
 		});
 	});

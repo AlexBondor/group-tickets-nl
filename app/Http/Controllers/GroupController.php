@@ -395,15 +395,24 @@ class GroupController extends Controller {
         $callback = Request::get('callback');
         $action = Request::get('action');
         $group = Group::find($group_id);
+        $users = $group->users;
+
         $message = $this->user->name . " has " . $action . " " . $group->destination->name . " - " . $group->date->format('d/m/y') . " group. Check it out!";
         $access_token = getenv('FACEBOOK_CLIENT_ID') . "|" . getenv('FACEBOOK_CLIENT_SECRET');
-        $url =  "https://graph.facebook.com/" . $this->user->provider_id . 
-                "/notifications?access_token=" . $access_token .
-                "&template=" . $message .
-                "&href=" . $callback;
 
-        $client = new Guzzle($url);
-        $client->post()->send();
-        return $url;
+        // Alert each member of the group that current
+        // user has done something:D
+        foreach ($users as $user) 
+        {
+            if($user->provider_id != $this->user->provider_id)
+            {
+                $url =  "https://graph.facebook.com/" . $user->provider_id . 
+                    "/notifications?access_token=" . $access_token .
+                    "&template=" . $message .
+                    "&href=" . $callback;
+                $client = new Guzzle($url);
+                $client->post()->send();
+            }
+        }
     }
 }

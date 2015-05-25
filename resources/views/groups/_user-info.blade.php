@@ -136,5 +136,19 @@
 			    return false;
 			});
 		});
+
+		$( document ).ready(function() {
+			$("#btnLeaveGroupConfirm").on("click", function() {
+				$.ajax({
+					type: "POST",
+					url: "/groups/notify",
+					data: {
+						'group_id': "{{ $group->id }}",
+						'callback': "/groups/{{ $group->id }}",
+						'action': "left"
+					}
+				});
+			});
+		});
 	</script>
 @endsection
