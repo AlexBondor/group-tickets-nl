@@ -64,9 +64,9 @@
 			type: "POST",
 			url: "/groups/notify",
 			data: {
-				'user_name': {{ $logged_user->name }},
-				'destination_slug': {{ $destination_slug }},
-				'date': {{ $date }},
+				'user_name': "{{ $logged_user->name }}",
+				'destination_slug': "{{ $destination_slug }}",
+				'date': "{{ $date }}",
 				'callback': "#",
 				'action': "joined"
 			},
