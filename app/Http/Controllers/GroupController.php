@@ -277,13 +277,14 @@ class GroupController extends Controller {
         // Update tickets available for group
         // In Safari input max is not working.. so user might set
         // more tickets than group has available
-        if ($group->slots - $request->tickets >= 0)
+        if ($group->slots - $request->tickets < 0)
         {
-            $group->slots -= $request->tickets;
-            $group->save();
             return view('errors.503');
         }
 
+        $group->slots -= $request->tickets;
+        $group->save();
+            
         if($group->slots == 0)
         {
             $this->notifyGroupFull($group);
