@@ -29,7 +29,7 @@
 				<form method="post" action="/groups/join" class="pull-right">
 					{!! Form::hidden('group_id', $new_group->id) !!}
 					{!! Form::hidden('tickets', $tickets) !!}
-					<input id="{{ $new_group->id }}" class="btn btn-primary join-btn" value="Join">
+					<input id="{{ $new_group->id }}" class="btn btn-primary join-btn" type="submit" value="Join">
 				</form>
 
 			</div>
