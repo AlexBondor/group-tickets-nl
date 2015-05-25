@@ -22,6 +22,10 @@ Route::post('/', 'WelcomeController@index');
 Route::get('admin/message', 'AdminController@composeMessage');
 Route::post('admin/message', 'AdminController@sendMessage');
 
+Route::get('updates', 'AdminController@showUpdates');
+// FB
+Route::post('updates', 'AdminController@showUpdates');
+
 /**
  * Groups handling
  */

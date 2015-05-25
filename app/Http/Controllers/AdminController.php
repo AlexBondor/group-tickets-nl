@@ -49,4 +49,9 @@ class AdminController extends Controller {
             $client->post()->send();
         }
 	}
+
+	public function showUpdates()
+	{
+		return view('admin.updates');
+	}
 }
