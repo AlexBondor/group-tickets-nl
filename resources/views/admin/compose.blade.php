@@ -13,11 +13,17 @@
 		{
 			if (!event.shiftKey) 
 			{
+				$message = $('#message').val();
+	    	 	$('#message').attr('disabled', '');
+	    	 	$('#message').val('');
 				$.ajax({
 					type: "POST",
 					url: "/admin/message",
 					data: {
-						'message': $(this).val()
+						'message': $message
+					},
+					success: function(){
+						alert("Sent");
 					}
 				});
 			}

@@ -68,7 +68,7 @@ class GroupController extends Controller {
      * @param  [type] $my_groups [description]
      * @return [type]            [description]
      */
-    private function sort ($my_groups)
+    private function sort($my_groups)
     {
         // Transform Collection to Array
         // Create date and name arrays used for sorting
@@ -238,6 +238,11 @@ class GroupController extends Controller {
         $group->slots += $old_tickets - $tickets;
         $group->save();
 
+        if($group->slots == 0)
+        {
+            $this->notifyGroupFull($group);
+        }
+
         if(Request::ajax())
         {
             return [$tickets, 10 - $group->slots];
@@ -268,13 +273,44 @@ class GroupController extends Controller {
         $this->syncGroupUsers($request->group_id, $request->tickets);
 
         // Update tickets available for group
-        
-        $group->slots -= $request->tickets;
-        $group->save();
+        // In Safari input max is not working.. so user might set
+        // more tickets than group has available
+        if ($group->slots - $request->tickets >= 0)
+        {
+            $group->slots -= $request->tickets;
+            $group->save();
+            return view('error.503');
+        }
+
+        if($group->slots == 0)
+        {
+            $this->notifyGroupFull($group);
+        }
 
         session()->flash('joined_group_message', 'You joined the group!');
 
         return redirect('groups');
+    }
+
+    public function notifyGroupFull($group)
+    {
+        $users = $group->users;
+        $callback = "/groups/" . $group->id;
+
+        $message = $group->destination->name . " - " . $group->date->format('d/m/y') . " group is FULL!";
+        $access_token = getenv('FACEBOOK_CLIENT_ID') . "|" . getenv('FACEBOOK_CLIENT_SECRET');
+
+        // Alert each member of the group that current
+        // user has done something:D
+        foreach ($users as $user) 
+        {
+            $url =  "https://graph.facebook.com/" . $user->provider_id . 
+                "/notifications?access_token=" . $access_token .
+                "&template=" . $message .
+                "&href=" . $callback;
+            $client = new Guzzle($url);
+            $client->post()->send();
+        }
     }
 
     /**
@@ -398,7 +434,7 @@ class GroupController extends Controller {
         $group = Group::find($group_id);
         $users = $group->users;
 
-        $message = $this->user->name . " has " . $action . " " . $group->destination->name . " - " . $group->date->format('d/m/y') . " group. Check it out!";
+        $message = $this->user->name . " has " . $action . " " . $group->destination->name . " - " . $group->date->format('d/m/y') . " group.";
         $access_token = getenv('FACEBOOK_CLIENT_ID') . "|" . getenv('FACEBOOK_CLIENT_SECRET');
 
         // Alert each member of the group that current
