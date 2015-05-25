@@ -388,8 +388,8 @@ class GroupController extends Controller {
      * @param  Request $request [description]
      * @return [type]           [description]
      */
-    public function notifyUsers(Request $request)
+    public function notifyUsers()
     {
-        return $request->user_name;
+        return Request::get('user_name');
     }
 }
