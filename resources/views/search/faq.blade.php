@@ -5,14 +5,14 @@
 	<hr>
 	<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 	<div class="panel panel-default">
-    <div class="panel-heading" role="tab" id="headingOne">
+    <div class="panel-heading" role="tab" id="headingZero">
       <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseZero" aria-expanded="true" aria-controls="collapseZero">
           What does this website do?
         </a>
       </h4>
     </div>
-    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+    <div id="collapseZero" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingZero">
       <div class="panel-body">
        	This website is meant to make searching/creating/joining/sharing groups easier than the big Facebook groups that exist already. 
        	<br>
@@ -28,7 +28,7 @@
         </a>
       </h4>
     </div>
-    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+    <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
       <div class="panel-body">
         When you click a notification Facebook will try to load the content of this website inside a facebook page. But it will only load contents of applications the users trust. If you haven't done any settings when you click a notification you will be shown a white page with a 'sad face'(in Chrome for ex.) on the page.
 		<br>
