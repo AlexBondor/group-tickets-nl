@@ -26,7 +26,7 @@
 	});
 
 	$( document ).ready(function() {
-		$("#newComment").on("click", function() {
+		$("#newComment").on("submit", function() {
 			$.ajax({
 				type: "POST",
 				url: "/groups/notify",
@@ -36,7 +36,7 @@
 					'action': "commented on"
 				}
 			});
-			
+
 			// Save new comment to database and update user's view
     	 	$comment = $('#comment').val();
     	 	$('#comment').attr('disabled', '');
