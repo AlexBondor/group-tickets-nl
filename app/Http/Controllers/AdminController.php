@@ -7,8 +7,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
 use Guzzle\Http\Client as Guzzle;
 
-use Illuminate\Http\Request;
-
 class AdminController extends Controller {
 
 	private $users;
