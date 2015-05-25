@@ -390,6 +390,6 @@ class GroupController extends Controller {
      */
     public function notifyUsers(Request $request)
     {
-        return $request['user_name'];
+        return $request->user_name;
     }
 }
