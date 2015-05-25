@@ -17,7 +17,7 @@
 					type: "POST",
 					url: "/admin/message",
 					data: {
-						'message': $(this).value
+						'message': $(this).val()
 					}
 				});
 			}
