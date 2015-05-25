@@ -15,6 +15,11 @@
  */
 Route::get('/', 'WelcomeController@index');
 
+/**
+ * Admin handling
+ */
+Route::get('admin/message', 'AdminController@composeMessage');
+Route::post('admin/message', 'AdminController@sendMessage');
 
 /**
  * Groups handling
@@ -25,7 +30,6 @@ Route::post('groups/create', 'GroupController@createGroup');
 Route::post('groups/update', 'GroupController@updateGroup');
 Route::post('groups/join', 'GroupController@joinGroup');
 Route::post('groups/leave', 'GroupController@leaveGroup');
-Route::get('groups/message', 'GroupController@composeMessage');
 Route::post('groups/notify', 'GroupController@notifyUsers');
 Route::get('groups/{slug}', 'GroupController@show');
 

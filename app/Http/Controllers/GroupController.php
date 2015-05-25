@@ -293,6 +293,7 @@ class GroupController extends Controller {
             return view('errors.503');
         }
 
+        DB::table('comments')->whereRaw('group_id = ? AND user_id = ?', [$group->id, $this->user->id])->delete();
         DB::table('group_user')->whereRaw('group_id = ? AND user_id = ?', [$group->id, $this->user->id])->delete();
 
         // Update tickets available for the group
