@@ -22,6 +22,8 @@ class GroupController extends Controller {
 
 	private $user;
 
+    private $enable = false;
+
     /**
      * Create a new controller instance.
      *
@@ -428,29 +430,32 @@ class GroupController extends Controller {
      */
     public function notifyUsers()
     {
-        $group_id = Request::get('group_id');
-        $callback = Request::get('callback');
-        $action = Request::get('action');
-        $group = Group::find($group_id);
-        $users = $group->users;
-        $tickets = 10 - $group->slots;
-
-        $message = $this->user->name . " has " . $action . " [" . $tickets . "/10]" . $group->destination->name . " - " . $group->date->format('d/m/y') . " group.";
-        $access_token = getenv('FACEBOOK_CLIENT_ID') . "|" . getenv('FACEBOOK_CLIENT_SECRET');
-
-        // Alert each member of the group that current
-        // user has done something:D
-        foreach ($users as $user) 
+        if ($this->enable)
         {
-            if($user->provider_id != $this->user->provider_id)
+            $group_id = Request::get('group_id');
+            $callback = Request::get('callback');
+            $action = Request::get('action');
+            $group = Group::find($group_id);
+            $users = $group->users;
+            $tickets = 10 - $group->slots;
+
+            $message = $this->user->name . " has " . $action . " [" . $tickets . "/10]" . $group->destination->name . " - " . $group->date->format('d/m/y') . " group.";
+            $access_token = getenv('FACEBOOK_CLIENT_ID') . "|" . getenv('FACEBOOK_CLIENT_SECRET');
+
+            // Alert each member of the group that current
+            // user has done something:D
+            foreach ($users as $user) 
             {
-                $url =  "https://graph.facebook.com/" . $user->provider_id . 
-                    "/notifications?access_token=" . $access_token .
-                    "&template=" . $message .
-                    "&href=" . $callback;
-                $client = new Guzzle($url);
-                $client->post()->send();
+                if($user->provider_id != $this->user->provider_id)
+                {
+                    $url =  "https://graph.facebook.com/" . $user->provider_id . 
+                        "/notifications?access_token=" . $access_token .
+                        "&template=" . $message .
+                        "&href=" . $callback;
+                    $client = new Guzzle($url);
+                    $client->post()->send();
+                }
             }
-        }
+        }        
     }
 }
