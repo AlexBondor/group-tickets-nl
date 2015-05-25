@@ -10,7 +10,7 @@
 		<div class="container">
 			<div class="content">
 				<div class="div-container">
-					<div class="title">staging grouptickets.nl</div>
+					<div class="title">grouptickets.nl</div>
 				</div>
 
 				<div class="div-container">
