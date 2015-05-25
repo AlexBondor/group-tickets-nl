@@ -382,4 +382,14 @@ class GroupController extends Controller {
         $response->headers->set('Content-Type', 'text/event-stream');
         return $response;
     }
+
+    /**
+     * Notify the users when something changed in a group
+     * @param  Request $request [description]
+     * @return [type]           [description]
+     */
+    public function notifyUsers(Request $request)
+    {
+        dd($request);
+    }
 }

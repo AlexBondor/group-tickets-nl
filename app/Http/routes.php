@@ -26,6 +26,7 @@ Route::post('groups/update', 'GroupController@updateGroup');
 Route::post('groups/join', 'GroupController@joinGroup');
 Route::post('groups/leave', 'GroupController@leaveGroup');
 Route::get('groups/message', 'GroupController@composeMessage');
+Route::post('groups/notify', 'GroupController@notifyUsers');
 Route::get('groups/{slug}', 'GroupController@show');
 
 /**

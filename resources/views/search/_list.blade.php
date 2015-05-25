@@ -29,7 +29,7 @@
 				<form method="post" action="/groups/join" class="pull-right">
 					{!! Form::hidden('group_id', $new_group->id) !!}
 					{!! Form::hidden('tickets', $tickets) !!}
-					<input id="{{ $new_group->id }}" class="btn btn-primary join-btn" value="Join">
+					<input id="{{ $new_group->id }}" class="btn btn-primary join-btn" type="submit" value="Join">
 				</form>
 
 			</div>
@@ -60,29 +60,17 @@
 @section('footer')
 <script type="text/javascript">
 	$(".join-btn").on("click", function() {
-		var access_token="{{ getenv("FACEBOOK_CLIENT_ID") }}|{{ getenv("FACEBOOK_CLIENT_SECRET") }}";
-		var template="{{ $logged_user->name }} has joined {{ $destination_slug }} - {{ $date }} group. Check it out!";
-		var callback="#";
-		var group_id = $(this).attr('id');
-		var url = "/groups/" + group_id;
-		$.ajax({ 
-			url: url, 
-			success: function(data){
-	        	console.log(data);
-		        // Signal members on FB that somebody has joined the group
-			 	for(var index in data) 
-			 	{
-					if (data[index]['provider_id'] != {{ $logged_user->provider_id }})
-					{
-						var url = "https://graph.facebook.com/" + data[index]['provider_id'] + "/notifications?access_token=" + access_token + "&template=" + template + "&href=" + callback;
-						$.ajax({
-			        		type: "POST",
-			        		url: url
-						});
-					}
-				}
-	    	}
-	    });
+		$.ajax({
+			type: "POST",
+			url: "/groups/notify",
+			data: {
+				'user_name': {{ $logged_user->name }},
+				'destination_slug': {{ $destination_slug }},
+				'date': {{ $date }},
+				'callback': "#",
+				'action': "joined"
+			}
+		});
 	});
 </script>
 @endsection
