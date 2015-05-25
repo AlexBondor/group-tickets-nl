@@ -402,9 +402,8 @@ class GroupController extends Controller {
                 "&template=" . $message .
                 "&href=" . $callback;
 
-        $client = new Guzzle();
-        $client->post($url);
-        $client->send();
+        $client = new Guzzle($url);
+        $client->post()->send();
         return $url;
     }
 }
