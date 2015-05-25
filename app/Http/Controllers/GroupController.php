@@ -390,6 +390,11 @@ class GroupController extends Controller {
      */
     public function notifyUsers()
     {
-        return Request::get('group_id');
+        $group_id = Request::get('group_id');
+        $callback = Request::get('callback');
+        $action = Request::get('action');
+        $group = Group::find($group_id);
+        $message = $logged_user->name + " has " + $action + " " + $group->name + " - " + $group->date->format('d-m-y') + ". Check it out!";
+        return $message;
     }
 }
