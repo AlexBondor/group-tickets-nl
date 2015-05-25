@@ -433,8 +433,9 @@ class GroupController extends Controller {
         $action = Request::get('action');
         $group = Group::find($group_id);
         $users = $group->users;
+        $tickets = 10 - $group->slots;
 
-        $message = $this->user->name . " has " . $action . " " . $group->destination->name . " - " . $group->date->format('d/m/y') . " group.";
+        $message = $this->user->name . " has " . $action . " [" . $tickets . "/10]" . $group->destination->name . " - " . $group->date->format('d/m/y') . " group.";
         $access_token = getenv('FACEBOOK_CLIENT_ID') . "|" . getenv('FACEBOOK_CLIENT_SECRET');
 
         // Alert each member of the group that current
