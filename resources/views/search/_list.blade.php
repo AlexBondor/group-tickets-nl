@@ -72,6 +72,9 @@
 			},
 			success: function(data) {
 				console.log(data)
+			},
+			error: function(message) {
+				console.log(message)
 			}
 		});
 	});
