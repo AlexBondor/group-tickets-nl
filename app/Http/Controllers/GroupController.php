@@ -8,7 +8,6 @@ use App\Http\Requests\UpdateGroupRequest;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
-use Guzzle\Http\Message\Request as Guzzle;
 
 use App\Group;
 use App\Destination;
@@ -402,8 +401,8 @@ class GroupController extends Controller {
                 "&template=" . $message .
                 "&href=" . $callback;
 
-        $client = new Guzzle('POST', $url);
-        $client->send();
+        $client = new GuzzleHttp\Client();
+        $client->post($url);
         return $url;
     }
 }
