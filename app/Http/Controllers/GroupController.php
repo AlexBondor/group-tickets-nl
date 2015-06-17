@@ -272,7 +272,6 @@ class GroupController extends Controller {
         {
             return view('errors.503');
         }
-        $this->syncGroupUsers($request->group_id, $request->tickets);
 
         // Update tickets available for group
         // In Safari input max is not working.. so user might set
@@ -281,6 +280,7 @@ class GroupController extends Controller {
         {
             return view('errors.503');
         }
+        $this->syncGroupUsers($request->group_id, $request->tickets);
 
         $group->slots -= $request->tickets;
         $group->save();
