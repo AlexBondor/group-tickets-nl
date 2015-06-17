@@ -7,6 +7,8 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta content="Description" property="og:description"/>
+		<meta content="Title" property="og:title"/>
 		<title>Group Tickets</title>
 		<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
 		<link href="{{ asset('/css/roboto-font.css') }}" rel="stylesheet">
@@ -40,6 +42,7 @@
 					<ul class="nav navbar-nav">
 						<li><a href="{{ url('/groups') }}">My Groups</a></li>
 						<li><a href="{{ url('/search') }}">Search</a></li>
+						<li><a href="{{ url('/updates') }}">Updates</a></li>
 						<li><a href="{{ url('/faq') }}">FAQ</a></li>
 					</ul>
 

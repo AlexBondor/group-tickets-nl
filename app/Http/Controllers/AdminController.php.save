@@ -34,24 +34,19 @@ class AdminController extends Controller {
 			return view('errors.503');
 		}
 	 	$message = Request::get('message');
-	 	$callback = "updates";
-        $access_token = getenv('FACEBOOK_CLIENT_ID') . "|" . getenv('FACEBOOK_CLIENT_SECRET');
+	 	$callback = "www.grouptickets.nl";
+        	$access_token = getenv('FACEBOOK_CLIENT_ID') . "|" . getenv('FACEBOOK_CLIENT_SECRET');
 
         // Send admin message as FB notification to each
         // DB user
-        foreach ($this->users as $user)
-        {
-            $url =  "https://graph.facebook.com/" . $user->provider_id .
-                "/notifications?access_token=" . $access_token .
-                "&template=" . $message .
-                "&href=" . $callback;
+       // foreach ($this->users as $user) 
+        //{
+         //   $url =  "https://graph.facebook.com/" . $user->provider_id . 
+          //      "/notifications?access_token=" . $access_token .
+           //     "&template=" . $message .
+            //    "&href=" . $callback;
             $client = new Guzzle($url);
             $client->post()->send();
         }
-	}
-
-	public function showUpdates()
-	{
-		return view('admin.updates');
 	}
 }

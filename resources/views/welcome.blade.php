@@ -1,6 +1,7 @@
 <html>
 	<head>
 		<meta name="google-site-verification" content="w2BMBm6jvUGBjWXZYDjFWWF_aZqPSzXMp5bx1FaUbNg" />
+		<meta property="og:title" content="Group" />
 		<title>Welcome</title>
 		<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -18,7 +19,7 @@
 				</div>
 
 				<div class="div-container">
-					<a class="btn btn-block btn-facebook fb-button" href="http://grouptickets.nl/login" target="_blank">
+					<a class="btn btn-block btn-facebook fb-button" href="http://grouptickets.nl/login">
 				    	<i class="fa fa-facebook"></i> Login with FB!
 				    </a>
 			    </div>

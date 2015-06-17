@@ -40,6 +40,8 @@ Route::post('groups/join', 'GroupController@joinGroup');
 Route::post('groups/leave', 'GroupController@leaveGroup');
 Route::post('groups/notify', 'GroupController@notifyUsers');
 Route::get('groups/{slug}', 'GroupController@show');
+// FB
+Route::post('groups/{slug}', 'GroupController@show');
 
 /**
  * Search handling

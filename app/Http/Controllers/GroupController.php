@@ -22,7 +22,7 @@ class GroupController extends Controller {
 
 	private $user;
 
-    private $enable = false;
+    private $enable = true;
 
     /**
      * Create a new controller instance.
