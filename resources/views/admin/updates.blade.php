@@ -4,6 +4,23 @@
 	<div class="heading-font-normal">Updates:</div>
 	<hr>
 	<div class="search-data">
+		<b>17/06/15</b>
+		<br>
+		The number of tickets in a group should be displayed properly from now on!
+		<br>
+		<br>
+		If you still belong to groups (that are created from now on) in which the number of tickets is not correct from now on please send an email to support@grouptickets.nl
+		<br>
+		<br>
+		Happy travelling,
+		<br>
+		Alex Bondor
+		<br>
+		<br>
+
+		<hr>
+		<b>16/05/15</b>
+		<br>
 		Hello there!
 		<br>
 		<br>

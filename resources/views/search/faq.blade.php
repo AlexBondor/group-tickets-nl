@@ -24,22 +24,22 @@
     <div class="panel-heading" role="tab" id="headingOne">
       <h4 class="panel-title">
         <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          How to enable clickable FB notifications?
+		Privacy Policy
         </a>
       </h4>
     </div>
     <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
       <div class="panel-body">
-        When you click a notification Facebook will try to load the content of this website inside a facebook page. But it will only load contents of applications the users trust. If you haven't done any settings when you click a notification you will be shown a white page with a 'sad face'(in Chrome for ex.) on the page.
-		<br>
-		<br>
-		How can you solve this?
-		<br>
-		Go to <a href="https://www.grouptickets.nl">https://www.grouptickets.nl</a>.
-		<br>
-		There will be a page with a lock(in Chrome for ex) and you have to click "Advanced" and afterwards hit "Proceed"(it says that it is untrusted, but you can trust me there is nothing wrong that can happen). It should be similar to other browsers.
-		<br>
-		That is the moment when you say you trust the website and from that moment on Facebook will be able to load the websites' content when you click a notification.
+	In the next paragraphs I will try to explain to everybody what data do I gather from the users and what do I do with it.
+	<br>
+	<br>
+	The website stores public data from your Facebook account. More precisely it stores your name, email, facebook page link, facebook avatar link and facebook user id. Moreover any comment that you post on this website is stored as well.
+	<br>
+	<br>
+	All the user information is gathered and stays in the website database. There is no way that somebody from outside has access to your information through my website.
+	<br>
+	<br>
+	grouptickets.nl also uses Google Analytics which provides information in numbers about the user flow on the website.
       </div>
     </div>
   </div>

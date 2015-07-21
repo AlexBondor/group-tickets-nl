@@ -42,7 +42,7 @@
 					<ul class="nav navbar-nav">
 						<li><a href="{{ url('/groups') }}">My Groups</a></li>
 						<li><a href="{{ url('/search') }}">Search</a></li>
-						<li><a href="{{ url('/updates') }}">Updates</a></li>
+						<li><a href="{{ url('/updates') }}"><span class="badge" style="background-color:red">1</span>Updates</a></li>
 						<li><a href="{{ url('/faq') }}">FAQ</a></li>
 					</ul>
 
