@@ -34,7 +34,9 @@ class SearchController extends Controller {
 
 		asort($destinations);
 
-		return view('search.index', compact('destinations'));
+        $default_id = Destination::where('slug', '=', 'anywhere')->first()->id;
+
+		return view('search.index', compact('destinations', 'default_id'));
 	}
 
     /**
@@ -45,9 +47,9 @@ class SearchController extends Controller {
      */
     public function show(SearchRequest $request)
     {
-        $code = $request->destination_list[0];
+        $destination_id = $request->destination_list[0];
         
-        if ($code == 1)
+        if (Destination::find($destination_id)->slug == 'anywhere')
         {
             $builder = Group::myDate($request->date)
                              ->enoughSlots($request->tickets);
@@ -74,7 +76,6 @@ class SearchController extends Controller {
         $new_groups = $results->diff($joined_groups);
         
         $tickets = $request->tickets;
-        $destination_id = $request->destination_list[0];
         $date = $request->date;
         $destination_name = Destination::find($destination_id)->name;
         $logged_user = $this->user;

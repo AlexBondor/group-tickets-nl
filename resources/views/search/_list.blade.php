@@ -5,7 +5,7 @@
 		{{ count($new_groups) }} new groups
 	</div>
 
-	@if (count($new_groups) == 0 && $data['destination_id'] != 1)
+	@if (count($new_groups) == 0 && $data['destination_slug'] != 'anywhere')
 
 		<form method="post" action="/groups/create">
 			{!! Form::hidden('destination_id', $data['destination_id']) !!}

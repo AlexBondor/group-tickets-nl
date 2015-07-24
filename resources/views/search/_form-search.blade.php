@@ -1,7 +1,7 @@
 <!-- Destination Form Input -->
 <div class="form-group">
 	{!! Form::label('destination_list', "Where to?") !!}
-	{!! Form::select('destination_list[]', $destinations, array(1), ['id' => 'destination_list', 'class' => 'form-control', 'style' => 'width: 100%;']) !!}
+	{!! Form::select('destination_list[]', $destinations, $default_id, ['id' => 'destination_list', 'class' => 'form-control', 'style' => 'width: 100%;']) !!}
 </div>
 
 <!-- Date Form Input -->
