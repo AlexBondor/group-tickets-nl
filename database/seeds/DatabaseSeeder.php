@@ -17,14 +17,14 @@ class DatabaseSeeder extends Seeder {
 
 		Model::unguard();
 
-		$this->command->info('Seeding users table..');
-		$this->call('UserTableSeeder');
+		//$this->command->info('Seeding users table..');
+		//$this->call('UserTableSeeder');
 
 		$this->command->info('Seeding destinations table..');
 		$this->call('DestinationTableSeeder');
 
-		$this->command->info('Seeding groups table..');
-		$this->call('GroupTableSeeder');
+		//$this->command->info('Seeding groups table..');
+		//$this->call('GroupTableSeeder');
 
 		$end = Carbon::now();
 

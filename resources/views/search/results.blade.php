@@ -4,11 +4,11 @@
 	<div class="heading-font-normal">
 		Searched for:
 		<div class="search-data">
-			Destination: {{ $destination_name }}
+			Destination: {{ $data['destination_name'] }}
 			</br>
-			Date: {{ $date }}
+			Date: {{ $data['date'] }}
 			</br>
-			Tickets: {{ $tickets }}
+			Tickets: {{ $data['tickets'] }}
 			</br>
 		</div>
 		<hr>

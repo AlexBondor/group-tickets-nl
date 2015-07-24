@@ -31,6 +31,7 @@ class SearchController extends Controller {
 	public function index()
 	{
 		$destinations = Destination::lists('name', 'id');
+
 		asort($destinations);
 
 		return view('search.index', compact('destinations'));
@@ -44,9 +45,19 @@ class SearchController extends Controller {
      */
     public function show(SearchRequest $request)
     {
-        $builder = Group::myDestination($request->destination_list[0])
-                         ->myDate($request->date)
-                         ->enoughSlots($request->tickets);
+        $code = $request->destination_list[0];
+        
+        if ($code == 1)
+        {
+            $builder = Group::myDate($request->date)
+                             ->enoughSlots($request->tickets);
+        }
+        else
+        {
+            $builder = Group::myDestination($request->destination_list[0])
+                             ->myDate($request->date)
+                             ->enoughSlots($request->tickets);
+        }
 
         // All results of searched query
         $results = $builder->get();
@@ -65,11 +76,20 @@ class SearchController extends Controller {
         $tickets = $request->tickets;
         $destination_id = $request->destination_list[0];
         $date = $request->date;
-
         $destination_name = Destination::find($destination_id)->name;
         $logged_user = $this->user;
         $destination_slug = Destination::find($destination_id)->slug;
-        return view('search.results', compact('new_groups', 'joined_groups', 'tickets', 'destination_id', 'date', 'destination_name', 'logged_user', 'destination_slug'));
+
+        $data = array(
+            'tickets'=>$tickets,
+            'destination_id'=>$destination_id,
+            'date'=>$date,
+            'destination_name'=>$destination_name,
+            'logged_user'=>$logged_user,
+            'destination_slug'=>$destination_slug
+        );
+
+        return view('search.results', compact('new_groups', 'joined_groups', 'data'));
     }
 
     /**

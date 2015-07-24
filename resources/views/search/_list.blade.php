@@ -5,12 +5,12 @@
 		{{ count($new_groups) }} new groups
 	</div>
 
-	@if (count($new_groups) == 0)
+	@if (count($new_groups) == 0 && $data['destination_id'] != 1)
 
 		<form method="post" action="/groups/create">
-			{!! Form::hidden('destination_id', $destination_id) !!}
-			{!! Form::hidden('date', $date) !!}
-			{!! Form::hidden('tickets', $tickets) !!}
+			{!! Form::hidden('destination_id', $data['destination_id']) !!}
+			{!! Form::hidden('date', $data['date']) !!}
+			{!! Form::hidden('tickets', $data['tickets']) !!}
 			<input class="btn btn-primary btn-block" type="submit" value="Create new group">
 		</form>
 
@@ -28,7 +28,7 @@
 
 				<form method="post" action="/groups/join" class="pull-right">
 					{!! Form::hidden('group_id', $new_group->id) !!}
-					{!! Form::hidden('tickets', $tickets) !!}
+					{!! Form::hidden('tickets', $data['tickets']) !!}
 					<input id="{{ $new_group->id }}" class="btn btn-primary join-btn" type="submit" value="Join">
 				</form>
 
