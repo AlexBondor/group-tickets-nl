@@ -6,10 +6,12 @@
 	  			<img class="user-img" src="{{ $logged_user->avatar }}">
 	  		</a>
 		    <div class="caption">
-				<span id="spanTickets" aria-hidden="true">+{{ $logged_user->tickets($group->id) }}</span>
-				<div tabindex="0" class="pull-right" data-toggle="popover" data-content="{{ $logged_user->email }}" data-placement="bottom">
+				<div class="user-info-email-box pull-left" tabindex="0" data-toggle="popover" data-content="{{ $logged_user->email }}" data-placement="bottom">
 					<span class="glyphicon glyphicon-envelope" aria-hidden="true" data-value='popover'></span>
 				</div>	
+			    <div class="tickets pull-right">
+						<span id="spanTickets" class="glyphicon glyphicon-tags" aria-hidden="true"></span> {{ $logged_user->tickets($group->id) }}
+				</div>
 			</div>
 	    </div>
 	</div>

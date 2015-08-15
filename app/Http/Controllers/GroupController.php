@@ -117,7 +117,9 @@ class GroupController extends Controller {
             return view('errors.503');
         }
 
-		return view('groups.show', compact('group', 'logged_user'));
+        $leader_id = -1;
+
+		return view('groups.show', compact('group', 'logged_user', 'leader_id'));
 	}	
 
 	/**

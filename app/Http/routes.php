@@ -39,6 +39,7 @@ Route::post('groups/update', 'GroupController@updateGroup');
 Route::post('groups/join', 'GroupController@joinGroup');
 Route::post('groups/leave', 'GroupController@leaveGroup');
 Route::post('groups/notify', 'GroupController@notifyUsers');
+Route::post('groups/leader', 'GroupController@setGroupLeader');
 Route::get('groups/{slug}', 'GroupController@show');
 // FB
 Route::post('groups/{slug}', 'GroupController@show');

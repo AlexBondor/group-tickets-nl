@@ -12,10 +12,10 @@
 					Date: {{ $group->date->format('d.m.y') }}	
 					<div class="share-it">
 				    	You can share the link with anybody!
-				  </div>
-				</div>			
-			</div>
-		</div>
+				  	</div>
+				</div>	
+			</div>	
+		</div>	
 		<div class="col-xs-4 group-slots">
 			<input id="availableSlots" type="hidden" value="{{ $group->slots + $logged_user->tickets($group->id) }}">
 			<div id="groupSlots" class="pull-right">
@@ -23,6 +23,14 @@
 			</div>
 		</div>
 	</div>
+
+	@if ($leader_id == -1)
+		<br>
+		{!! Form::model($group_leader = new \App\GroupLeader, ['url' => 'groups/leader']) !!}
+			@include ('groups._form-group-leader')
+		{!! Form::close() !!}
+	@endif
+
 	<hr>
 
 	@include('groups._user-info')

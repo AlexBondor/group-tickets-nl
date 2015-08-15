@@ -332,7 +332,7 @@ div.inline {
 
 div.thumbnail > a > img {
 	width: auto;
-	border: 1px solid #BBB;
+	border: 1px solid #000;
 }
 
 .user-img {
@@ -484,4 +484,47 @@ div.thumbnail > a > img {
 div.container {
 	padding-left: 0px;
 	padding-right: 0px;
+}
+
+.tickets {
+	font-size:18px;
+	color: green;
+}
+
+.member-name {
+	font-size: 16px;
+	color: #000066;
+}
+
+.user-info-email-box {
+	font-size:18px;
+}
+
+.member-email-box {
+	width: 20px;
+}
+
+
+
+
+
+
+
+.group-leader {
+	background: -webkit-linear-gradient(left, #b2b2b2 , #e5e5e5); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, #b2b2b2, #e5e5e5); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, #b2b2b2, #e5e5e5); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, #b2b2b2 , #e5e5e5); /* Standard syntax (must be last) */
+}
+
+.modal-close-button {
+	margin-bottom: 0px;
+}
+
+.modal-body, .alert {
+	margin-bottom: 0px;
+}
+
+.user-stats {
+	font-size: 12px;
 }
