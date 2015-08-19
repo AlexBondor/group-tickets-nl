@@ -3,7 +3,7 @@
 		@if ($user->id != $logged_user->id)
 			<div class="list-group-item row">
 				<div class="col-xs-6 right-col">
-					@if ($user->id == $leader_id)
+					@if ($user->id == $group->admin_id)
 						Group leader
 						<br>
 					@endif
@@ -19,6 +19,7 @@
 					<div class="tickets pull-right">
 						<span class="glyphicon glyphicon-tags" aria-hidden="true"></span> {{ $user->tickets($group->id) }}
 					</div>
+					<br>
 				</div>
 			</div>
 		@endif

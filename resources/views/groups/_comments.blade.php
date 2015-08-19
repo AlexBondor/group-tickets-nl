@@ -2,7 +2,7 @@
 
 <form id="newComment" method="post" action="/groups/comment">
 	{!! Form::hidden('group_id', $group->id, ['id' => 'group_id']) !!}
-	<textarea id="comment" name="text" rows="2" cols="50" style="resize: none; width: 100%" placeholder="Enter a new comment.."></textarea>
+	<textarea id="comment" name="text" rows="5" cols="50" style="resize: none; width: 100%" placeholder="Enter a new comment.." maxlength="5000"></textarea>
 </form>
 
 <ul id="commentsList" class="media-list">

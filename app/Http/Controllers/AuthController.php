@@ -68,4 +68,8 @@ class AuthController extends Controller implements AuthenticateUserListener
 		return redirect('/');
 	}
 
+    public function thankyou()
+    {
+        return view('admin.thankyou');
+    }
 }

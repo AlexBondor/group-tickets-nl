@@ -5,12 +5,14 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CommentRequest;
 use App\Http\Requests\CreateGroupRequest;
 use App\Http\Requests\UpdateGroupRequest;
+use App\Http\Requests\SetGroupLeaderRequest;
 use Guzzle\Http\Client as Guzzle;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
 
 use App\Group;
+use App\GroupLeader;
 use App\Destination;
 use App\Comment;
 use DB;
@@ -117,9 +119,7 @@ class GroupController extends Controller {
             return view('errors.503');
         }
 
-        $leader_id = -1;
-
-		return view('groups.show', compact('group', 'logged_user', 'leader_id'));
+		return view('groups.show', compact('group', 'logged_user'));
 	}	
 
 	/**
@@ -255,6 +255,25 @@ class GroupController extends Controller {
         {
             return $this->show($group->id);
         }
+    }
+
+    public function setGroupLeader(SetGroupLeaderRequest $request)
+    {
+        $db_group = Group::find($request->group_id);
+        
+        // If the group has no leader yet
+        if ($db_group->admin_id == -1)
+        {
+            $group = GroupLeader::create([
+                'user_id' => $request->user_id,
+                'group_id' => $request->group_id
+            ]);   
+
+            $db_group->admin_id = $request->user_id;
+            $db_group->save();
+        }
+
+        return redirect('groups/' . $db_group->id . '-' . $db_group->destination->slug . '-' . $db_group->date->format('d-m-y'));
     }
 
     /**
@@ -396,34 +415,6 @@ class GroupController extends Controller {
                 ]);
 
         return View::make('groups._comments-list', compact('group'));
-    }
-
-    /**
-     * Listen if until something changes in group
-     * @return [type] [description]
-     */
-    public function listen($groupId)
-    {
-        $response = new Symfony\Component\StreamedResponse(function() {
-            //$old_comments = array();
-            $old_slots = 10;
-            while(true)
-            {
-                $group = Group::find($groupId);
-                $new_slots = $group->slots;
-                if ($old_slots != $new_slots)
-                {
-                    echo 'data: ' . json_encode($new_slots) . "\n\n";
-                    ob_flush();
-                    flush();
-                }
-                sleep(3);
-                $old_slots = $new_slots;
-            }
-        });
-        
-        $response->headers->set('Content-Type', 'text/event-stream');
-        return $response;
     }
 
     /**

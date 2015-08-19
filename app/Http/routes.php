@@ -33,7 +33,7 @@ Route::get('groups', 'GroupController@index');
 // FB
 Route::post('groups', 'GroupController@index');
 
-Route::post('groups/comment', 'GroupController@addComment');
+Route::post('groups/', 'GroupController@addComment');
 Route::post('groups/create', 'GroupController@createGroup');
 Route::post('groups/update', 'GroupController@updateGroup');
 Route::post('groups/join', 'GroupController@joinGroup');

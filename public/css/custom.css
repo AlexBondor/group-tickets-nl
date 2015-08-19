@@ -528,3 +528,7 @@ div.container {
 .user-stats {
 	font-size: 12px;
 }
+
+.comment-time-edit-delete-section {
+	padding-right: 3px;
+}

@@ -24,7 +24,7 @@
 		</div>
 	</div>
 
-	@if ($leader_id == -1)
+	@if ($group->admin_id == -1)
 		<br>
 		{!! Form::model($group_leader = new \App\GroupLeader, ['url' => 'groups/leader']) !!}
 			@include ('groups._form-group-leader')
