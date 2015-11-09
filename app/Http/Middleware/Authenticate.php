@@ -44,6 +44,11 @@ class Authenticate {
 			}
 		}
 
+		if ($this->auth->user()->banned == 1)
+		{
+			return view('admin.banned');
+		};
+
 		return $next($request);
 	}
 

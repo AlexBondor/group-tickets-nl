@@ -11,7 +11,7 @@
 			{!! Form::hidden('destination_id', $destination_id) !!}
 			{!! Form::hidden('date', $date) !!}
 			{!! Form::hidden('tickets', $tickets) !!}
-			<input class="btn btn-primary btn-block" type="submit" value="Create new group">
+			<!-- <input class="btn btn-primary btn-block" type="submit" value="Create new group"> -->
 		</form>
 
 	@endif

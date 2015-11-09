@@ -42,7 +42,6 @@
 					<ul class="nav navbar-nav">
 						<li><a href="{{ url('/groups') }}">My Groups</a></li>
 						<li><a href="{{ url('/search') }}">Search</a></li>
-						<li><a href="{{ url('/updates') }}"><span class="badge" style="background-color:red">1</span>Updates</a></li>
 						<li><a href="{{ url('/faq') }}">FAQ</a></li>
 					</ul>
 
@@ -63,7 +62,10 @@
 				<div class="col-xs-12 col-md-6 col-md-offset-3 content">
 					
 					@include('_message')
-
+					
+					
+<b>Important message!</b> Unfotunately, the NS doesn't want this website to function anymore in the way it works now. You won't be able to create groups anymore until the NS and I come to an agreement and maybe there will be some other way of travelling cheaper so that is profitable for them as well. <b>Thank you for all your support!</b> If you have any idea that I should propose to the NS drop me a line at support@grouptickets.nl. With regret, Alex Bondor.
+					
 					@yield('content')
 					<div align="center" style="color:#000066; font-size: 12px; font-weight: 400">
 						support@grouptickets.nl
