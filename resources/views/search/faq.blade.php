@@ -17,7 +17,9 @@
        	This website is meant to make searching/creating/joining/sharing groups easier than the big Facebook groups that exist already. 
        	<br>
        	You cannot buy train tickets from this website! When a group is full you have to agree on who's going to buy the tickets and you buy the tickets from ns.nl website(the link is available on any group under the Order button).
-      </div>
+      	<br>
+	I am not responsible for any fraud that might be encountered while using the grouptickets.nl website!
+	</div>
     </div>
   </div>
   <div class="panel panel-default">
